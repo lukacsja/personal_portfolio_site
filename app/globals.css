@@ -11,7 +11,7 @@
     --color-secondary-gray: #607B96;
     --color-secondary-green: #3C9D93;
     --color-secondary-blue: #4D5BCE;
-    --color-secondary-white: #fff;
+    /* --color-secondary-white: #fff; */
 
     --color-accent-yellow: #FEA55F;
     --color-accent-green: #43D9AD;
@@ -22,9 +22,31 @@
 
     --color-gradients-blue: #4D5BCE;
     --color-gradients-green: #43D9AD;
+
+    --color-text-white: #E5E9F0;
   }
 }
 
-.asd {
-  background-color: var(--color-primary-dark);
+.gradient-circle {
+  width: 300px;
+  height: 300px;
+  filter: blur(100px);
+  opacity: 0.65;
+  rotate: 15deg;
+}
+
+.top-left {
+  background: radial-gradient(circle, var(--color-gradients-green) 0%, #000000 100%);
+  border-radius: 0 50%;
+  position: fixed;
+  right: 30%;
+  top: 20%;
+}
+
+.bottom-right {
+  background: radial-gradient(circle, var(--color-gradients-blue) 0%, #000000 100%);
+  border-radius: 0 50%;
+  bottom: 25%;
+  position: fixed;
+  right: 5%;
 }

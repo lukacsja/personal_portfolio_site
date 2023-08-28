@@ -28,6 +28,7 @@ const config: Config = {
         'lines': 'var(--color-lines)',
         'gradients-blue': 'var(--color-gradients-blue)',
         'gradients-green': 'var(--color-gradients-green)',
+        'text-white': 'var(--color-text-white)',
       }
     },
   },
