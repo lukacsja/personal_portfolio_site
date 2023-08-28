@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* COLORS - Primary */
+.clr-primary-dark {
+  background-color: #01080E;
+}
+
+.clr-primary-light {
+  background-color: #011627;
+}
+
+.clr-primary-medium {
+  background-color: #011221;
+}
+
+/* COLORS - Secondary */
+.clr-secondary-gray {
+  background-color: #607B96;
+}
+
+.clr-secondary-green {
+  background-color: #3C9D93;
+}
+
+.clr-secondary-blue {
+  background-color: #4D5BCE;
+}
+
+.clr-secondary-white {
+  background-color: #FFFFFF;
+}
+
+/* COLORS - Accent */
+.clr-accent-yellow {
+  background-color: #FEA55F;
+}
+
+.clr-accent-green {
+  background-color: #43D9AD;
+}
+
+.clr-accent-rose {
+  background-color: #E99287;
+}
+
+.clr-accent-pink {
+  background-color: #C98BDF;
+}
+
+/* COLORS - Lines */
+.clr-lines {
+  background-color: #1E2D3D;
+}
+
+/* COLORS - Gradients */
+.clr-gradients-blue {
+  background-color: #4D5BCE;
+}
+
+.clr-gradients-green {
+  background-color: #43D9AD;
+}
+
