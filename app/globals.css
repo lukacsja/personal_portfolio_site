@@ -2,64 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* COLORS - Primary */
-.clr-primary-dark {
-  background-color: #01080E;
+@layer base {
+  :root {
+    --color-primary-dark: #01080E;
+    --color-primary-light: #011627;
+    --color-primary-medium: #011221;
+
+    --color-secondary-gray: #607B96;
+    --color-secondary-green: #3C9D93;
+    --color-secondary-blue: #4D5BCE;
+    --color-secondary-white: #fff;
+
+    --color-accent-yellow: #FEA55F;
+    --color-accent-green: #43D9AD;
+    --color-accent-rose: #E99287;
+    --color-accent-pink: #C98BDF;
+
+    --color-lines: #1E2D3D;
+
+    --color-gradients-blue: #4D5BCE;
+    --color-gradients-green: #43D9AD;
+  }
 }
 
-.clr-primary-light {
-  background-color: #011627;
+.asd {
+  background-color: var(--color-primary-dark);
 }
-
-.clr-primary-medium {
-  background-color: #011221;
-}
-
-/* COLORS - Secondary */
-.clr-secondary-gray {
-  background-color: #607B96;
-}
-
-.clr-secondary-green {
-  background-color: #3C9D93;
-}
-
-.clr-secondary-blue {
-  background-color: #4D5BCE;
-}
-
-.clr-secondary-white {
-  background-color: #FFFFFF;
-}
-
-/* COLORS - Accent */
-.clr-accent-yellow {
-  background-color: #FEA55F;
-}
-
-.clr-accent-green {
-  background-color: #43D9AD;
-}
-
-.clr-accent-rose {
-  background-color: #E99287;
-}
-
-.clr-accent-pink {
-  background-color: #C98BDF;
-}
-
-/* COLORS - Lines */
-.clr-lines {
-  background-color: #1E2D3D;
-}
-
-/* COLORS - Gradients */
-.clr-gradients-blue {
-  background-color: #4D5BCE;
-}
-
-.clr-gradients-green {
-  background-color: #43D9AD;
-}
-

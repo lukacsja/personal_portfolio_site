@@ -1,4 +1,7 @@
 import './globals.css'
+
+import 'tailwindcss/tailwind.css'
+
 import type { Metadata } from 'next'
 import { Fira_Code } from 'next/font/google'
 
@@ -16,7 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fira_Code.className}>{children}</body>
+      <body className={fira_Code.className}>
+        {children}
+      </body>
     </html>
   )
 }
+ 
