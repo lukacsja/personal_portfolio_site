@@ -7,6 +7,7 @@ import { Fira_Code } from "next/font/google";
 import Header from "@/components/header";
 import { MobileMenuProvider } from "@/context/mobileMenuContext";
 import SectionDivider from "@/components/sectionDivider";
+import Footer from "@/components/footer";
 
 const fira_Code = Fira_Code({ subsets: ["latin"] });
 
@@ -22,11 +23,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fira_Code.className}>
+      <body className={`${fira_Code.className} flex flex-col h-screen`}>
+        <div className="gradient-circle top-left"></div>
+        <div className="gradient-circle bottom-right"></div>
         <MobileMenuProvider>
           <Header />
           <SectionDivider />
           {children}
+          <div className="hidden lg:block">
+            <Footer />
+          </div>
         </MobileMenuProvider>
       </body>
     </html>
