@@ -4,6 +4,9 @@ import "tailwindcss/tailwind.css";
 
 import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
+import Header from "@/components/header";
+import { MobileMenuProvider } from "@/context/mobileMenuContext";
+import SectionDivider from "@/components/sectionDivider";
 
 const fira_Code = Fira_Code({ subsets: ["latin"] });
 
@@ -19,7 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fira_Code.className}>{children}</body>
+      <body className={fira_Code.className}>
+        <MobileMenuProvider>
+          <Header />
+          <SectionDivider />
+          {children}
+        </MobileMenuProvider>
+      </body>
     </html>
   );
 }
