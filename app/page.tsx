@@ -1,8 +1,11 @@
+import { contacts } from "@/lib/data";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex-1 bg-primary-light px-[27px] pt-[96px] pb-[84px] lg:flex lg:justify-center lg:items-center lg:py-0 lg:px-12 lg:gap-20">
+    <main className="flex-1 px-[27px] pt-[96px] pb-[84px] lg:flex lg:justify-center lg:items-center lg:py-0 lg:px-12 lg:gap-20">
+      <div className="gradient-circle top-left"></div>
+      <div className="gradient-circle bottom-right"></div>
       <div className="flex flex-col justify-between h-full lg:justify-evenly">
         <section className="flex flex-col leading-none">
           <p className="text-[18px] text-text-white mb-[10px]">Hi all. I am</p>
@@ -20,10 +23,10 @@ export default function Home() {
             <span className="text-white">= </span>
             <Link
               className="text-accent-rose underline"
-              href="https://github.com/lukacsja"
+              href={contacts.github}
               target="_blank"
             >
-              {`"https://github.com/lukacsja"`}
+              {contacts.github}
             </Link>
           </div>
         </section>

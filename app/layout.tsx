@@ -23,9 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${fira_Code.className} flex flex-col h-screen`}>
-        <div className="gradient-circle top-left"></div>
-        <div className="gradient-circle bottom-right"></div>
+      <body
+        className={`${fira_Code.className} flex flex-col h-screen bg-primary-light`}
+      >
         <MobileMenuProvider>
           <Header />
           <SectionDivider />

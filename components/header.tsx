@@ -5,8 +5,7 @@ import { navLinks } from "@/lib/data";
 import Link from "next/link";
 import { useMobileMenu } from "@/context/mobileMenuContext";
 import MobileMenu from "./mobileMenu";
-import { IconContext } from "react-icons";
-import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
+import Image from "next/image";
 
 const Header = () => {
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
@@ -15,7 +14,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full h-[56px] px-[18px] border-b border-lines flex justify-between items-center bg-primary-light text-secondary-gray text-[16px]">
+      <header className="w-full h-[56px] px-[18px] border-b border-lines flex justify-between items-center text-secondary-gray text-[16px]">
         <span>janos-lukacs</span>
         <div className="hidden lg:flex">
           {navLinks.map((link) => (
@@ -28,18 +27,19 @@ const Header = () => {
             </Link>
           ))}
         </div>
-        <IconContext.Provider
-          value={{ color: "var(--color-secondary-gray)", size: "30px" }}
-        >
-          <div className="flex">
-            <button
-              onClick={toggleMobileMenu}
+        <div className="flex">
+          <button onClick={toggleMobileMenu}>
+            <Image
+              src={isMobileMenuOpen ? "/icons/x.svg" : "/icons/hamburger.svg"}
+              alt="linkedin logo"
+              width="24"
+              height="24"
+              quality={95}
+              priority
               className="transform active:rotate-90 transition-transform duration-300 ease-in-out lg:hidden"
-            >
-              {isMobileMenuOpen ? <RxCross1 /> : <RxHamburgerMenu />}
-            </button>
-          </div>
-        </IconContext.Provider>
+            />
+          </button>
+        </div>
       </header>
       <MobileMenu />
     </>

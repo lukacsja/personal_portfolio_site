@@ -1,7 +1,8 @@
+
 export const navLinks = [
   {
     name: '_hello',
-    href: '/hello',
+    href: '/',
   },
   {
     name: '_about-me',
@@ -16,3 +17,9 @@ export const navLinks = [
     href: '/contact',
   },
 ]
+
+export const contacts = {
+    github: "https://github.com/lukacsja",
+    linkedin: "https://linkedin.com/in/janos-lukacs-25786025a",
+    phone: "+36307821583"
+  };
