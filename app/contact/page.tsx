@@ -4,7 +4,7 @@ import DropdownItem from "@/components/dropdown-item";
 import PageTitle from "@/components/page-title";
 import { contactsData } from "@/lib/data";
 import React, { useState } from "react";
-import { sendEmail } from "../api/send/route";
+import { sendEmail } from "@/actions/sendEmail";
 
 enum FieldErrors {
   SenderName = "Your name is required.",
