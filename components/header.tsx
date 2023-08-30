@@ -10,8 +10,6 @@ import Image from "next/image";
 const Header = () => {
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
 
-  console.log(isMobileMenuOpen);
-
   return (
     <>
       <header className="w-full h-[56px] px-[18px] border-b border-lines flex justify-between items-center text-secondary-gray text-[16px]">

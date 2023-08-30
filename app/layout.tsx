@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fira_Code.className} flex flex-col h-screen bg-primary-light`}
+        className={`${fira_Code.className} flex flex-col h-screen bg-primary-light selection:bg-secondary-green selection:text-white`}
       >
         <MobileMenuProvider>
           <Header />

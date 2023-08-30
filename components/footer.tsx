@@ -10,7 +10,7 @@ const Footer = () => {
       <span className="text-secondary-gray">find me in:</span>
       <div className="flex">
         <a
-          href={contacts.github}
+          href={contacts.github.url}
           target="_blank"
           className="flex justify-center items-center w-12 h-12 border-l-[1px] border-lines"
         >
@@ -22,7 +22,7 @@ const Footer = () => {
           />
         </a>
         <a
-          href={contacts.linkedin}
+          href={contacts.linkedin.url}
           target="_blank"
           className="flex justify-center items-center w-12 h-12 border-l-[1px] border-lines"
         >

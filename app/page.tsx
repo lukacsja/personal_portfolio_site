@@ -23,10 +23,10 @@ export default function Home() {
             <span className="text-white">= </span>
             <Link
               className="text-accent-rose underline"
-              href={contacts.github}
+              href={contacts.github.url}
               target="_blank"
             >
-              {contacts.github}
+              {contacts.github.url}
             </Link>
           </div>
         </section>
