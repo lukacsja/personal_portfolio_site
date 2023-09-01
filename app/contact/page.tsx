@@ -1,5 +1,6 @@
 'use client';
 
+import CodeSnippet from '@/components/code-snippet';
 import DropdownItem from '@/components/dropdown-item';
 import PageTitle from '@/components/page-title';
 import { contactsData } from '@/lib/data';
@@ -135,9 +136,9 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className='lg:flex lg:px-[24px] lg:py-[48px]'>
+      <div className='lg:flex lg:w-full lg:items-center lg:justify-center lg:gap-[48px] lg:px-[24px] lg:py-[48px]'>
         {submitted ? (
-          <div className='mt-[42px] flex flex-col items-center justify-center gap-[20px]'>
+          <div className='mt-[42px] flex flex-col items-center justify-center gap-[20px] lg:mt-[0] lg:w-[30%]'>
             <h2 className='text-[24px] text-text-white'>Thank you! ✌️</h2>
             <p className='mb-[10px] text-center text-secondary-gray'>
               Your message has been accepted. You will receive answer really
@@ -153,7 +154,7 @@ const Contact = () => {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className='mt-[42px] flex flex-col gap-[18px] text-secondary-gray'
+            className='mt-[42px] flex flex-col gap-[18px] text-secondary-gray lg:mt-0 lg:w-[30%]'
           >
             <div className='flex flex-col gap-[10px]'>
               <span>_name:</span>
@@ -228,6 +229,11 @@ const Contact = () => {
             </button>
           </form>
         )}
+        <CodeSnippet
+          name={formData.senderName}
+          email={formData.senderEmail}
+          message={formData.formMessage}
+        />
       </div>
     </main>
   );
