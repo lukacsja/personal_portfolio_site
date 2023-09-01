@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --color-primary-dark: #01080E;
+    --color-primary-dark: #01080e;
     --color-primary-light: #011627;
     --color-primary-medium: #011221;
 
-    --color-secondary-gray: #607B96;
-    --color-secondary-green: #3C9D93;
-    --color-secondary-blue: #4D5BCE;
+    --color-secondary-gray: #607b96;
+    --color-secondary-green: #3c9d93;
+    --color-secondary-blue: #4d5bce;
     /* --color-secondary-white: #fff; */
 
-    --color-accent-yellow: #FEA55F;
-    --color-accent-green: #43D9AD;
-    --color-accent-rose: #E99287;
-    --color-accent-pink: #C98BDF;
+    --color-accent-yellow: #fea55f;
+    --color-accent-green: #43d9ad;
+    --color-accent-rose: #e99287;
+    --color-accent-pink: #c98bdf;
 
-    --color-lines: #1E2D3D;
+    --color-lines: #1e2d3d;
 
-    --color-gradients-blue: #4D5BCE;
-    --color-gradients-green: #43D9AD;
+    --color-gradients-blue: #4d5bce;
+    --color-gradients-green: #43d9ad;
 
-    --color-text-white: #E5E9F0;
+    --color-text-white: #e5e9f0;
   }
 }
 
@@ -36,7 +36,11 @@
 }
 
 .top-left {
-  background: radial-gradient(circle, var(--color-gradients-green) 0%, #000000 100%);
+  background: radial-gradient(
+    circle,
+    var(--color-gradients-green) 0%,
+    #000000 100%
+  );
   border-radius: 0 50%;
   position: fixed;
   right: 30%;
@@ -44,7 +48,11 @@
 }
 
 .bottom-right {
-  background: radial-gradient(circle, var(--color-gradients-blue) 0%, #000000 100%);
+  background: radial-gradient(
+    circle,
+    var(--color-gradients-blue) 0%,
+    #000000 100%
+  );
   border-radius: 0 50%;
   bottom: 25%;
   position: fixed;

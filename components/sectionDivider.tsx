@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const SectionDivider = () => {
-  return <div className="w-full bg-lines h-[1px]" />;
+  return <div className='h-[1px] w-full bg-lines' />;
 };
 
 export default SectionDivider;
