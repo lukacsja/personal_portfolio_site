@@ -28,7 +28,6 @@ const MobileMenu = () => {
         ))}
       </div>
       <div>
-        <SectionDivider />
         <Footer />
       </div>
     </div>

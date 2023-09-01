@@ -72,16 +72,16 @@ const Contact = () => {
 
   return (
     <main
-      className='flex-1 px-[27px] pb-[24px] pt-[20px] text-text-white 
+      className='flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white 
     lg:flex lg:px-0 lg:py-0'
     >
-      <div className='overflow-hidden lg:flex lg:w-[310px] lg:flex-col lg:border-r-[1px] lg:border-lines lg:pl-[22px]'>
+      <div className='lg:flex lg:w-[310px] lg:flex-col lg:border-r-[1px] lg:border-lines'>
         <PageTitle title='_contact-me' />
-        <div className='flex flex-col gap-[3px]'>
+        <div className='flex flex-col gap-[3px] lg:gap-0'>
           <DropdownItem
             title={'contacts'}
             content={
-              <div className='flex flex-col gap-[10px] py-[16px] text-secondary-gray'>
+              <div className='flex flex-col gap-[10px] py-[16px] text-secondary-gray lg:px-[22px]'>
                 <div className='flex gap-[10px] transition-all duration-300 hover:text-text-white'>
                   <Image
                     src={contactsData.email.icon}
@@ -108,7 +108,7 @@ const Contact = () => {
           <DropdownItem
             title={'find-me-also-in'}
             content={
-              <div className='flex flex-col gap-[10px] py-[16px] text-secondary-gray'>
+              <div className='flex flex-col gap-[10px] py-[16px] text-secondary-gray lg:px-[22px]'>
                 <address className='flex gap-[10px] transition-all duration-300 hover:text-text-white'>
                   <Image
                     src={contactsData.github.icon}
@@ -134,7 +134,8 @@ const Contact = () => {
           />
         </div>
       </div>
-      <div className='lg: flex lg:px-[24px] lg:py-[48px]'>
+
+      <div className='lg:flex lg:px-[24px] lg:py-[48px]'>
         {submitted ? (
           <div className='mt-[42px] flex flex-col items-center justify-center gap-[20px]'>
             <h2 className='text-[24px] text-text-white'>Thank you! ✌️</h2>

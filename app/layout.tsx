@@ -28,7 +28,7 @@ export default function RootLayout({
       >
         <MobileMenuProvider>
           <Header />
-          <SectionDivider />
+          {/* <SectionDivider /> */}
           {children}
           <div className='hidden lg:block'>
             <Footer />

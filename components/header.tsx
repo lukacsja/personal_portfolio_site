@@ -13,7 +13,8 @@ const Header = () => {
   return (
     <>
       <header className='flex h-[56px] w-full items-center justify-between border-b border-lines px-[18px] text-secondary-gray lg:justify-normal lg:px-[0]'>
-        <div className='lg:w-[310px]'>
+        <div className='lg:w-[309px]'>
+          {/* temp hardcode above */}
           <Link href='/' className='p-[18px] pr-0 lg:pl-[22px]'>
             janos-lukacs
           </Link>
@@ -23,7 +24,7 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className='border border-b-0 border-t-0 border-lines px-8 py-4 last:ml-auto'
+              className='border-x-[1px] border-lines px-8 py-4 last:ml-auto'
             >
               {link.name}
             </Link>
