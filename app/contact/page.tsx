@@ -4,7 +4,6 @@ import DropdownItem from "@/components/dropdown-item";
 import PageTitle from "@/components/page-title";
 import { contactsData } from "@/lib/data";
 import React, { useState } from "react";
-import { sendEmail } from "@/actions/sendEmail";
 
 enum FieldErrors {
   SenderName = "Your name is required.",
@@ -31,7 +30,13 @@ const Contact = () => {
 
     try {
       setPending(true);
-      await sendEmail(formData);
+      await fetch("/api/send-email/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
       setSubmitted(true);
       setFormData({
         senderName: "",

@@ -1,4 +1,3 @@
-"use server";
 
 import { EmailTemplate } from '@/components/email-template';
 import React from 'react';
