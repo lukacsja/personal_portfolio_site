@@ -26,3 +26,9 @@ export type FormData = {
   senderEmail: string;
   formMessage: string;
 };
+
+export enum FieldErrors {
+  SenderName = 'Your name is required.',
+  SenderEmail = 'Please provide a valid email address.',
+  FormMessage = "Don't forget to type your message!",
+}
