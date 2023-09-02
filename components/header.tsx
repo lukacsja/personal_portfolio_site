@@ -24,7 +24,7 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className='border-x-[1px] border-lines px-8 py-4 last:ml-auto'
+              className='before:absolut relative border-x-[1px] border-b-[3px] border-transparent border-x-lines px-8 py-4 transition-all duration-500 before:h-[3px] before:w-0 before:bg-accent-yellow hover:bg-lines focus:border-b-[3px] focus:border-b-accent-yellow'
             >
               {link.name}
             </Link>

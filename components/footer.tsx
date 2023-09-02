@@ -15,7 +15,7 @@ const Footer = () => {
           <a
             href={contactsData.github.url}
             target='_blank'
-            className='flex h-12 w-12 items-center justify-center border-l-[1px] border-lines'
+            className='flex h-12 w-12 items-center justify-center border-l-[1px] border-lines transition-all duration-300 hover:bg-lines'
           >
             <Image
               src={contactsData.github.icon}
@@ -27,7 +27,7 @@ const Footer = () => {
           <a
             href={contactsData.linkedin.url}
             target='_blank'
-            className='flex h-12 w-12 items-center justify-center border-l-[1px] border-lines'
+            className='flex h-12 w-12 items-center justify-center border-l-[1px] border-lines transition-all duration-300 hover:bg-lines'
           >
             <Image
               src={contactsData.linkedin.icon}
