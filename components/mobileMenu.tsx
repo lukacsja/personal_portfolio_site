@@ -23,7 +23,7 @@ const MobileMenu = () => {
             >
               {link.name}
             </Link>
-            <SectionDivider />
+            <SectionDivider direction='horizontal' />
           </React.Fragment>
         ))}
       </div>

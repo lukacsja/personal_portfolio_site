@@ -8,7 +8,7 @@ import SectionDivider from './sectionDivider';
 const Footer = () => {
   return (
     <>
-      <SectionDivider />
+      <SectionDivider direction='horizontal' />
       <footer className='flex h-12 items-center justify-between pl-[18px]'>
         <span className='text-secondary-gray'>find me in:</span>
         <div className='flex'>

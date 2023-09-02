@@ -36,11 +36,11 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ name, email, message }) => {
   }, [name, email, message]);
 
   return (
-    <div className='hidden justify-center lg:flex lg:h-full lg:w-full lg:items-start lg:gap-[20px] lg:text-[18px] lg:leading-[27px] lg:text-secondary-gray'>
+    <div className='hidden justify-center lg:flex lg:h-full lg:w-full lg:items-start lg:gap-[20px] lg:px-[24px] lg:pt-[156px] lg:text-[18px] lg:leading-[27px] lg:text-secondary-gray'>
       <div className='flex flex-col items-end'>
         {lineNumbers?.map((number) => <div>{number}</div>)}
       </div>
-      <div ref={snippetRef} className=''>
+      <div ref={snippetRef} className='break-keep'>
         <span className='text-accent-pink'>const</span>{' '}
         <span className='text-secondary-blue'>button</span>{' '}
         <span className='text-accent-pink'>=</span>{' '}

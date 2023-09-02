@@ -33,7 +33,7 @@ const DropdownItem: React.FC<Props> = ({ title, content }) => {
       </div>
       {isDropdownOpen && content}
       <div className='hidden lg:block'>
-        <SectionDivider />
+        <SectionDivider direction='horizontal' />
       </div>
     </>
   );
