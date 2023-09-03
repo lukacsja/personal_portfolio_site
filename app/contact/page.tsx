@@ -3,9 +3,11 @@
 import ContactForm from '@/components/contact-form';
 import DropdownItem from '@/components/dropdown-item';
 import PageTitle from '@/components/page-title';
+import SectionDivider from '@/components/sectionDivider';
 import { contactsData } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import React from 'react';
 
 const Contact = () => {
@@ -73,7 +75,16 @@ const Contact = () => {
           />
         </div>
       </div>
-      <ContactForm />
+      <div className='w-full lg:flex lg:flex-col'>
+        <div className='hidden text-[16px] text-secondary-gray lg:flex lg:py-[5px]'>
+          <div className='flex justify-between px-[15px]'>
+            <div>contacts</div>
+            <Image src='/icons/x.svg' alt='close' width='18' height='18' />
+          </div>
+        </div>
+        <SectionDivider direction='horizontal' />
+        <ContactForm />
+      </div>
     </main>
   );
 };

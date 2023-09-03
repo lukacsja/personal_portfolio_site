@@ -12,9 +12,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ name, email, message }) => {
 
   const lineHeight = 27;
 
-  const today = new Date().toString().slice(0, 10).split(' ').join(' ');
-
-  console.log(new Date());
+  const today = new Date().toString().slice(0, 10);
 
   useEffect(() => {
     const updateLineNumbers = () => {
@@ -35,46 +33,50 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ name, email, message }) => {
     };
   }, [name, email, message]);
 
+  const blue = 'text-secondary-blue';
+  const pink = 'text-accent-pink';
+  const yellow = 'text-accent-yellow';
+
   return (
     <div className='hidden justify-center lg:flex lg:h-full lg:w-full lg:items-start lg:gap-[20px] lg:px-[24px] lg:pt-[156px] lg:text-[18px] lg:leading-[27px] lg:text-secondary-gray'>
       <div className='flex flex-col items-end'>
-        {lineNumbers?.map((number) => <div>{number}</div>)}
+        {lineNumbers?.map((number) => <div key={number}>{number}</div>)}
       </div>
       <div ref={snippetRef} className='break-keep'>
-        <span className='text-accent-pink'>const</span>{' '}
-        <span className='text-secondary-blue'>button</span>{' '}
-        <span className='text-accent-pink'>=</span>{' '}
-        <span className='text-secondary-blue'>document.querySelector</span>(
-        <span className='text-accent-yellow'>'#sendBtn'</span>
-        );
+        <span className={pink}>const</span> <span className={blue}>button</span>{' '}
+        <span className={pink}>=</span>{' '}
+        <span className={blue}>document.querySelector</span>
+        {`(`}
+        <span className={yellow}>'#sendBtn'</span>
+        {`);`}
         <br />
         <br />
-        <span className='text-accent-pink'>const</span>{' '}
-        <span className='text-secondary-blue'>message</span>{' '}
-        <span className='text-accent-pink'>=</span> {'{'} <br />
-        <span className='text-secondary-blue'>name</span>:{' '}
-        <span className='text-accent-yellow'>"{name}" </span>,
+        <span className={pink}>const</span>{' '}
+        <span className={blue}>message</span> <span className={pink}>=</span>{' '}
+        {'{'} <br />
+        <span className={blue}>name</span>:{' '}
+        <span className={yellow}>"{name}" </span>,
         <br />
-        <span className='text-secondary-blue'>email</span>:{' '}
-        <span className='text-accent-yellow'>"{email}" </span>,
+        <span className={blue}>email</span>:{' '}
+        <span className={yellow}>"{email}" </span>,
         <br />
-        <span className='text-secondary-blue'>message</span>:{' '}
-        <span className='text-accent-yellow'>"{message}" </span>,<br />
+        <span className={blue}>message</span>:{' '}
+        <span className={yellow}>"{message}" </span>,<br />
         <span>date: </span>
-        <span className='text-accent-yellow'>"{today}"</span>
+        <span className={yellow}>"{today}"</span>
         <br />
         {'}'}
         <br />
         <br />
-        <span className='text-secondary-blue'>button</span>.
-        <span className='text-secondary-blue'>addEventListener</span>
+        <span className={blue}>button</span>.
+        <span className={blue}>addEventListener</span>
         {'('}
-        <span className='text-accent-yellow'>'click'</span>
+        <span className={yellow}>'click'</span>
         {', ()'}
-        <span>{' => '}</span>
+        <span className={pink}>{' => '}</span>
         {'{'}
         <br />
-        <span className='text-secondary-blue'>form</span>.<span>send</span>
+        <span className={blue}>form</span>.<span>send</span>
         {'('}
         <span>message</span>
         {');'}

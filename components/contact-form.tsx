@@ -75,7 +75,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className='items-start lg:flex lg:w-full lg:gap-[12px] lg:px-[24px]'>
+    <div className='items-start lg:flex lg:h-full lg:w-full lg:gap-[12px] lg:px-[24px]'>
       <div className='mt-[42px] flex w-full justify-center text-secondary-gray lg:mt-0 lg:px-[24px] lg:pt-[156px]'>
         {submitted ? (
           <div className='flex flex-col items-center justify-center gap-[20px]'>
