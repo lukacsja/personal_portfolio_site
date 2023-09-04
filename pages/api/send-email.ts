@@ -6,6 +6,7 @@ import { FormData } from '@/lib/types';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,12 +15,24 @@ export default async function handler(
   if (req.method === 'POST') {
     const formData: FormData = req.body;
 
-    const senderEmail = formData.senderEmail;
+    const senderEmail = formData.senderEmail.trim();
     const formMessage = formData.formMessage;
-    const senderName = formData.senderName;
+    const senderName = formData.senderName.trim();
 
-    if (!validateString(senderEmail, 500)) {
+    if (senderName === '') {
+      return res.status(400).json({ error: 'Sender name cannot be empty' });
+    }
+
+    if (senderEmail === '') {
+      return res.status(400).json({ error: 'Sender email cannot be empty' });
+    }
+
+    if (!emailRegex.test(senderEmail)) {
       return res.status(400).json({ error: 'Invalid sender email' });
+    }
+
+    if (formMessage === '') {
+      return res.status(400).json({ error: 'Message cannot be empty' });
     }
 
     if (!validateString(formMessage, 5000)) {
