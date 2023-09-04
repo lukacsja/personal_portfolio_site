@@ -18,6 +18,7 @@ export default async function handler(
     const senderEmail = formData.senderEmail.trim();
     const formMessage = formData.formMessage;
     const senderName = formData.senderName.trim();
+    const replyTo = formData.senderEmail.trim();
 
     if (senderName === '') {
       return res.status(400).json({ error: 'Sender name cannot be empty' });
@@ -29,6 +30,10 @@ export default async function handler(
 
     if (!emailRegex.test(senderEmail)) {
       return res.status(400).json({ error: 'Invalid sender email' });
+    }
+
+    if (!emailRegex.test(replyTo)) {
+      return res.status(400).json({ error: 'Invalid reply_to email' });
     }
 
     if (formMessage === '') {
@@ -44,7 +49,7 @@ export default async function handler(
         from: 'Portfolio Form <onboarding@resend.dev>',
         to: 'dev.lukacs@gmail.com',
         subject: 'Message from contact form',
-        reply_to: senderEmail as string,
+        reply_to: replyTo as string,
         react: React.createElement(EmailTemplate, {
           formMessage: formMessage as string,
           senderName: senderName as string,
