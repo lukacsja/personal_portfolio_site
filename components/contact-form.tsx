@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { FieldErrors, FormFields, FormData } from '@/lib/types';
 import CodeSnippet from './code-snippet';
@@ -17,33 +19,56 @@ const ContactForm = () => {
     formMessage: '',
   });
 
+  const hasFieldErrors = () => {
+    for (const key in fieldErrors) {
+      if (fieldErrors[key as keyof typeof fieldErrors]) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const isAnyFieldEmpty = () => {
+    return (
+      formData.senderName.trim() === '' ||
+      formData.senderEmail.trim() === '' ||
+      formData.formMessage.trim() === ''
+    );
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
       setIsSubmitPending(true);
-      await fetch('/api/send-email', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
-      setSubmitted(true);
-      setFormData({
-        senderName: '',
-        senderEmail: '',
-        formMessage: '',
-      });
+
+      const responseData = await response.json();
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({
+          senderName: '',
+          senderEmail: '',
+          formMessage: '',
+        });
+      } else if (!response.ok) {
+        setFieldErrors({
+          senderName: responseData.errors.senderName,
+          senderEmail: responseData.errors.senderEmail,
+          formMessage: responseData.errors.formMessage,
+        });
+      }
     } catch (error) {
       console.error('Error sending email:', error);
+      return null;
     } finally {
       setIsSubmitPending(false);
-      setFieldErrors({
-        senderName: '',
-        senderEmail: '',
-        formMessage: '',
-      });
     }
   };
 
@@ -61,18 +86,18 @@ const ContactForm = () => {
     }));
   };
 
-  const handleFieldErrors = (
-    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-    fieldName: FormFields,
-    message: FieldErrors
-  ) => {
-    event.preventDefault();
+  // const handleFieldErrors = (
+  //   event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+  //   fieldName: FormFields,
+  //   message: FieldErrors
+  // ) => {
+  //   event.preventDefault();
 
-    setFieldErrors((prevErrors) => ({
-      ...prevErrors,
-      [fieldName]: message,
-    }));
-  };
+  //   setFieldErrors((prevErrors) => ({
+  //     ...prevErrors,
+  //     [fieldName]: message,
+  //   }));
+  // };
 
   return (
     <div className='items-start lg:flex lg:h-full lg:w-full lg:gap-[12px] lg:px-[24px]'>
@@ -102,14 +127,14 @@ const ContactForm = () => {
                 type='text'
                 value={formData.senderName}
                 onChange={(e) => handleInputChange(e, FormFields.SenderName)}
-                required
-                onInvalid={(e) =>
-                  handleFieldErrors(
-                    e,
-                    FormFields.SenderName,
-                    FieldErrors.SenderName
-                  )
-                }
+                // required
+                // onInvalid={(e) =>
+                //   handleFieldErrors(
+                //     e,
+                //     FormFields.SenderName,
+                //     FieldErrors.SenderName
+                //   )
+                // }
                 className='h-[42px] rounded-lg border border-lines bg-primary-medium px-[15px] py-[5px]'
               />
               <span className='pl-[5px] text-[12px] text-accent-rose'>
@@ -122,14 +147,14 @@ const ContactForm = () => {
                 type='email'
                 value={formData.senderEmail}
                 onChange={(e) => handleInputChange(e, FormFields.SenderEmail)}
-                required
-                onInvalid={(e) =>
-                  handleFieldErrors(
-                    e,
-                    FormFields.SenderEmail,
-                    FieldErrors.SenderEmail
-                  )
-                }
+                // required
+                // onInvalid={(e) =>
+                //   handleFieldErrors(
+                //     e,
+                //     FormFields.SenderEmail,
+                //     FieldErrors.SenderEmail
+                //   )
+                // }
                 className='h-[42px] rounded-lg border border-lines bg-primary-medium px-[15px] py-[5px]'
               />
               <span className='pl-[5px] text-[12px] text-accent-rose'>
@@ -142,14 +167,14 @@ const ContactForm = () => {
                 value={formData.formMessage}
                 onChange={(e) => handleInputChange(e, FormFields.FormMessage)}
                 style={{ resize: 'none' }}
-                required
-                onInvalid={(e) =>
-                  handleFieldErrors(
-                    e,
-                    FormFields.FormMessage,
-                    FieldErrors.FormMessage
-                  )
-                }
+                // required
+                // onInvalid={(e) =>
+                //   handleFieldErrors(
+                //     e,
+                //     FormFields.FormMessage,
+                //     FieldErrors.FormMessage
+                //   )
+                // }
                 maxLength={5000}
                 className='h-[145px] rounded-lg border border-lines bg-primary-medium p-[15px]'
               />
@@ -159,8 +184,9 @@ const ContactForm = () => {
             </div>
             <button
               type='submit'
-              disabled={isSubmitPending}
-              className='w-[50%] rounded-lg bg-[#1C2B3A] px-[14px] py-[10px] text-[14px] text-text-white transition-all hover:bg-[#263B50] disabled:animate-pulse disabled:bg-opacity-20'
+              // disabled={hasFieldErrors() || isAnyFieldEmpty()}
+              className={`w-[50%] rounded-lg bg-[#1C2B3A] px-[14px] py-[10px] text-[14px] text-text-white transition-all hover:bg-[#263B50] disabled:bg-primary-medium
+              ${isSubmitPending ? 'animate-pulse bg-opacity-20' : ''}`}
             >
               submit-message
             </button>

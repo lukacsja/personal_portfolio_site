@@ -34,8 +34,11 @@ export enum FormFields {
 }
 
 export enum FieldErrors {
-  SenderName = 'Your name is required.',
-  SenderEmail = 'Please provide a valid email address.',
-  FormMessage = "Don't forget to type your message!",
+  nameEmpty = 'Your name is required.',
+  emailEmpty = 'Your email is required.',
+  messageEmpty = "Don't forget to type your message!",
+  nameInvalid = 'Invalid sender name.',
+  emailInvalid = 'Invalid sender email.',
+  messageInvalid = 'Invalid message',
   noError = '',
 }

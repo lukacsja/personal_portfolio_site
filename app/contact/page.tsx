@@ -1,5 +1,3 @@
-'use client';
-
 import ContactForm from '@/components/contact-form';
 import DropdownItem from '@/components/dropdown-item';
 import PageTitle from '@/components/page-title';
@@ -7,10 +5,12 @@ import SectionDivider from '@/components/sectionDivider';
 import { contactsData } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 import React from 'react';
+import { tldsArray } from '@/lib/utils';
 
 const Contact = () => {
+  console.log(tldsArray);
+  console.log(tldsArray[25]);
   return (
     <main
       className='flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white 

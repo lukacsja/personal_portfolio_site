@@ -45,22 +45,3 @@ export const contactsData: ContactsData = {
     icon: emailIcon,
   },
 };
-
-// export const contactsData: ContactsData = {
-//   personal: [
-//     {
-//       title: "email",
-//       value: "dev.lukacs@gmail.com",
-//       logo: emailLogo,
-//     },
-//     { title: "phone", value: "+36307821583", logo: phoneLogo },
-//   ],
-//   web: [
-//     { title: "github", value: "https://github.com/lukacsja", logo: githubLogo },
-//     {
-//       title: "linkedin",
-//       value: "https://linkedin.com/in/janos-lukacs-25786025a",
-//       logo: linkedinLogo,
-//     },
-//   ],
-// };
