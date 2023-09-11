@@ -6,11 +6,8 @@ import { contactsData } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { tldsArray } from '@/lib/utils';
 
 const Contact = () => {
-  console.log(tldsArray);
-  console.log(tldsArray[25]);
   return (
     <main
       className='flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white 
@@ -29,7 +26,10 @@ const Contact = () => {
                     alt={contactsData.email.title}
                     priority
                   />
-                  <Link href={`mailto:${contactsData.email.address}`}>
+                  <Link
+                    href={`mailto:${contactsData.email.address}`}
+                    target='_blank'
+                  >
                     {contactsData.email.address}
                   </Link>
                 </div>
@@ -39,7 +39,10 @@ const Contact = () => {
                     alt={contactsData.phone.title}
                     priority
                   />
-                  <Link href={`tel:${contactsData.phone.number}`}>
+                  <Link
+                    href={`tel:${contactsData.phone.number}`}
+                    target='_blank'
+                  >
                     {contactsData.phone.number}
                   </Link>
                 </address>
@@ -56,7 +59,7 @@ const Contact = () => {
                     alt={contactsData.github.title}
                     priority
                   />
-                  <Link href={`mailto:${contactsData.github.url}`}>
+                  <Link href={contactsData.github.url} target='_blank'>
                     {contactsData.github.title}
                   </Link>
                 </address>
@@ -66,7 +69,7 @@ const Contact = () => {
                     alt={contactsData.linkedin.title}
                     priority
                   />
-                  <Link href={`tel:${contactsData.linkedin.url}`}>
+                  <Link href={contactsData.linkedin.url} target='_blank'>
                     {contactsData.linkedin.title}
                   </Link>
                 </address>

@@ -35,11 +35,11 @@ const Header = () => {
             <Image
               src={isMobileMenuOpen ? '/icons/x.svg' : '/icons/hamburger.svg'}
               alt='linkedin logo'
-              width='24'
-              height='24'
+              width={24}
+              height={24}
               quality={95}
               priority
-              className='transform transition-transform duration-300 ease-in-out active:rotate-90 lg:hidden'
+              className='h-auto w-auto transform transition-transform duration-300 ease-in-out active:rotate-90 lg:hidden'
             />
           </button>
         </div>
