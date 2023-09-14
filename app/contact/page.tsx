@@ -9,10 +9,7 @@ import React from 'react';
 
 const Contact = () => {
   return (
-    <main
-      className='flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white 
-    lg:flex lg:px-0 lg:py-0'
-    >
+    <main className='flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
       <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col lg:border-r-[1px] lg:border-lines'>
         <PageTitle title='_contact-me' />
         <div className='flex flex-col gap-[3px] lg:gap-0'>
@@ -26,10 +23,7 @@ const Contact = () => {
                     alt={contactsData.email.title}
                     priority
                   />
-                  <Link
-                    href={`mailto:${contactsData.email.address}`}
-                    target='_blank'
-                  >
+                  <Link href={`mailto:${contactsData.email.address}`}>
                     {contactsData.email.address}
                   </Link>
                 </div>
@@ -39,10 +33,7 @@ const Contact = () => {
                     alt={contactsData.phone.title}
                     priority
                   />
-                  <Link
-                    href={`tel:${contactsData.phone.number}`}
-                    target='_blank'
-                  >
+                  <Link href={`tel:${contactsData.phone.number}`}>
                     {contactsData.phone.number}
                   </Link>
                 </address>

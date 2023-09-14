@@ -18,17 +18,18 @@ const DropdownItem: React.FC<Props> = ({ title, content }) => {
 
   return (
     <>
-      <div className='flex w-full items-center gap-3 bg-lines px-[27px] py-[5px] text-[16px] lg:bg-inherit lg:px-[22px]'>
-        <button onClick={toggleDropdownIcons}>
-          <Image
-            src='/icons/arrow-right-fill.svg'
-            alt='open menu'
-            width='8'
-            height='8'
-            priority
-            className={`${isDropdownOpen ? 'rotate-90' : ''} transition-all`}
-          />
-        </button>
+      <div
+        className='flex w-full cursor-pointer items-center gap-3 bg-lines px-[27px] py-[5px] text-[16px] lg:bg-inherit lg:px-[22px]'
+        onClick={toggleDropdownIcons}
+      >
+        <Image
+          src='/icons/arrow-right-fill.svg'
+          alt='open menu'
+          width='8'
+          height='8'
+          priority
+          className={`${isDropdownOpen ? 'rotate-90' : ''} transition-all`}
+        />
         {title}
       </div>
       {isDropdownOpen && content}
