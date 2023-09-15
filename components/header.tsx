@@ -6,30 +6,43 @@ import Link from 'next/link';
 import { useMobileMenu } from '@/context/mobileMenuContext';
 import MobileMenu from './mobileMenu';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import SectionDivider from './sectionDivider';
 
 const Header = () => {
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
+  const pathName = usePathname();
 
   return (
     <>
-      <header className='flex h-[56px] w-full items-center justify-between border-b border-lines px-[18px] text-secondary-gray lg:justify-normal lg:px-[0]'>
+      <header className='flex h-[56px] w-full items-center justify-between px-[18px] text-secondary-gray lg:justify-normal lg:px-[0]'>
         <div className='lg:w-[309px]'>
-          {/* temp hardcode above */}
+          {/* temp hardcode */}
           <Link href='/' className='p-[18px] pr-0 lg:pl-[22px]'>
             janos-lukacs
           </Link>
         </div>
-        <div className='hidden lg:flex'>
+        <SectionDivider direction='vertical' />
+        <nav className='hidden lg:flex'>
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className='relative border-x-[1px] border-b-[3px] border-transparent border-x-lines px-8 py-4 transition-all duration-500 before:absolute before:h-[3px] before:w-0 before:bg-accent-yellow hover:bg-lines focus:border-b-[3px] focus:border-b-accent-yellow'
-            >
-              {link.name}
-            </Link>
+            <div key={link.href} className='flex'>
+              <div className='group flex flex-col'>
+                <Link
+                  href={link.href}
+                  className='px-8 py-4 transition-all duration-500 hover:bg-lines'
+                >
+                  {link.name}
+                </Link>
+                <span
+                  className={`${
+                    pathName === link.href ? 'max-w-full' : ''
+                  } z-10 mt-[-3px] block h-[3px] max-w-0 bg-accent-yellow transition-all duration-500 group-hover:max-w-full`}
+                ></span>
+              </div>
+              <SectionDivider direction='vertical' />
+            </div>
           ))}
-        </div>
+        </nav>
         <div className='flex'>
           <button onClick={toggleMobileMenu}>
             <Image
@@ -44,6 +57,7 @@ const Header = () => {
           </button>
         </div>
       </header>
+      <SectionDivider direction='horizontal' />
       <MobileMenu />
     </>
   );
