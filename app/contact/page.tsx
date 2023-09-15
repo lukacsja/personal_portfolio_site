@@ -1,4 +1,5 @@
 import ContactForm from '@/components/contact-form';
+import CurrentTab from '@/components/current-tab-desktop';
 import DropdownItem from '@/components/dropdown-item';
 import PageTitle from '@/components/page-title';
 import SectionDivider from '@/components/sectionDivider';
@@ -70,12 +71,7 @@ const Contact = () => {
         </div>
       </div>
       <div className='w-full lg:flex lg:flex-col'>
-        <div className='hidden text-[16px] text-secondary-gray lg:flex lg:py-[5px]'>
-          <div className='flex justify-between px-[15px]'>
-            <div>contacts</div>
-            <Image src='/icons/x.svg' alt='close' width='18' height='18' />
-          </div>
-        </div>
+        <CurrentTab title='contacts' />
         <SectionDivider direction='horizontal' />
         <ContactForm />
       </div>

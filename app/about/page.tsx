@@ -1,14 +1,19 @@
 'use client';
 
 import PageTitle from '@/components/page-title';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { contactsData, aboutData } from '@/lib/data';
 import Image from 'next/image';
 import DropdownItem from '@/components/dropdown-item';
 import Link from 'next/link';
+import SectionDivider from '@/components/sectionDivider';
+import LineNumbers from '@/components/line-numbers';
+import CurrentTab from '@/components/current-tab-desktop';
 
 const About = () => {
   const [currentContent, setCurrentContent] = useState<string>('bio');
+
+  const paragraphRef = useRef<HTMLDivElement>(null);
 
   const getCurrentParagraph = (title: string) => {
     for (const section of aboutData) {
@@ -78,7 +83,6 @@ const About = () => {
               }
             />
           ))}
-
           <DropdownItem
             title={'contacts'}
             content={
@@ -109,12 +113,29 @@ const About = () => {
         </div>
       </div>
 
-      <div className='py-[38px] text-secondary-gray'>
-        <span className='text-text-white'>{`// ${getParentSectionTitle(
-          currentContent
-        )} `}</span>
-        <span>{`/ ${currentContent}`}</span>
-        <p className='mt-[16px]'>{getCurrentParagraph(currentContent)}</p>
+      <div className='w-full lg:flex lg:flex-col'>
+        <CurrentTab title={getParentSectionTitle(currentContent)} />
+        <SectionDivider direction='horizontal' />
+        <div className='items-start lg:flex lg:h-full lg:w-full lg:gap-[12px] lg:px-[24px]'>
+          <div className='mt-[42px] w-full justify-center py-[38px] text-secondary-gray lg:mt-0 lg:flex lg:min-w-[50%] lg:px-[24px]'>
+            <div className='mb-[16px] lg:hidden'>
+              <span className='text-text-white'>
+                {`// ${getParentSectionTitle(currentContent)} `}
+              </span>
+              <span>{`/ ${currentContent}`}</span>
+            </div>
+            <div className='flex h-full w-full items-start justify-center gap-[20px] text-[18px] leading-[27px] text-secondary-gray'>
+              <LineNumbers codeContainerRef={paragraphRef} lineHeight={27} />
+              <div className='' ref={paragraphRef}>
+                {getCurrentParagraph(currentContent)}
+              </div>
+            </div>
+          </div>
+          <SectionDivider direction='vertical' />
+          <div className='hidden justify-center lg:flex lg:h-full lg:w-full lg:items-start lg:gap-[20px] lg:px-[24px] lg:py-[38px] lg:text-[18px] lg:leading-[27px] lg:text-secondary-gray'>
+            code snippet showcase
+          </div>
+        </div>
       </div>
     </main>
   );

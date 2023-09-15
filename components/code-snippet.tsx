@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import LineNumbers from './line-numbers';
 
 interface CodeSnippetProps {
   name: string;
@@ -8,30 +9,8 @@ interface CodeSnippetProps {
 
 const CodeSnippet: React.FC<CodeSnippetProps> = ({ name, email, message }) => {
   const snippetRef = useRef<HTMLDivElement>(null);
-  const [lineNumbers, setLineNumbers] = useState<number[]>([]);
-
-  const lineHeight = 27;
 
   const today = new Date().toString().slice(0, 10);
-
-  useEffect(() => {
-    const updateLineNumbers = () => {
-      const codeContainerHeight = snippetRef?.current?.clientHeight ?? 1;
-      const requiredLines = codeContainerHeight / lineHeight + 1;
-
-      setLineNumbers(
-        Array.from({ length: requiredLines }, (_, index) => index + 1)
-      );
-    };
-
-    updateLineNumbers();
-
-    window.addEventListener('resize', updateLineNumbers);
-
-    return () => {
-      window.removeEventListener('resize', updateLineNumbers);
-    };
-  }, [name, email, message]);
 
   const blue = 'text-secondary-blue';
   const pink = 'text-accent-pink';
@@ -39,9 +18,8 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ name, email, message }) => {
 
   return (
     <div className='hidden justify-center lg:flex lg:h-full lg:w-full lg:items-start lg:gap-[20px] lg:px-[24px] lg:pt-[156px] lg:text-[18px] lg:leading-[27px] lg:text-secondary-gray'>
-      <div className='flex flex-col items-end'>
-        {lineNumbers?.map((number) => <div key={number}>{number}</div>)}
-      </div>
+      <LineNumbers codeContainerRef={snippetRef} lineHeight={27} />
+
       <div ref={snippetRef} className='break-keep'>
         <span className={pink}>const</span> <span className={blue}>button</span>{' '}
         <span className={pink}>=</span>{' '}
