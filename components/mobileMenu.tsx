@@ -9,7 +9,7 @@ const MobileMenu = () => {
   const { isMobileMenuOpen, closeMobileMenu } = useMobileMenu();
   return (
     <div
-      className={`z-999 fixed bottom-0 top-[57px] box-border flex w-full flex-col justify-between bg-primary-light transition-all duration-300 ${
+      className={`fixed bottom-0 top-[57px] z-[999] box-border flex w-full flex-col justify-between bg-primary-light transition-all duration-300 ${
         isMobileMenuOpen ? 'right-0' : 'right-[-100%]'
       }`}
     >

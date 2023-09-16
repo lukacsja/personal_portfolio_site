@@ -19,7 +19,7 @@ const DropdownItem: React.FC<Props> = ({ title, content }) => {
   return (
     <>
       <div
-        className='flex w-full cursor-pointer items-center gap-3 bg-lines px-[27px] py-[5px] text-[16px] lg:bg-inherit lg:px-[22px]'
+        className='flex w-full cursor-pointer select-none items-center gap-3 bg-lines px-[27px] py-[5px] text-[16px] lg:bg-inherit lg:px-[22px]'
         onClick={toggleDropdownIcons}
       >
         <Image

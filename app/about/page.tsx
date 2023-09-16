@@ -65,7 +65,7 @@ const About = () => {
                         } h-auto w-auto transition-all`}
                         priority
                       />
-                      <div className='flex gap-[10px] transition-all duration-300'>
+                      <div className='flex select-none gap-[10px] transition-all duration-300'>
                         <Image src={item.icon} alt={item.title} priority />
                         <p
                           className={

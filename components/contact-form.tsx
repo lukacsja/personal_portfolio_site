@@ -19,22 +19,22 @@ const ContactForm = () => {
     formMessage: '',
   });
 
-  const hasFieldErrors = () => {
-    for (const key in fieldErrors) {
-      if (fieldErrors[key as keyof typeof fieldErrors]) {
-        return true;
-      }
-    }
-    return false;
-  };
+  // const hasFieldErrors = () => {
+  //   for (const key in fieldErrors) {
+  //     if (fieldErrors[key as keyof typeof fieldErrors]) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // };
 
-  const isAnyFieldEmpty = () => {
-    return (
-      formData.senderName.trim() === '' ||
-      formData.senderEmail.trim() === '' ||
-      formData.formMessage.trim() === ''
-    );
-  };
+  // const isAnyFieldEmpty = () => {
+  //   return (
+  //     formData.senderName.trim() === '' ||
+  //     formData.senderEmail.trim() === '' ||
+  //     formData.formMessage.trim() === ''
+  //   );
+  // };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
