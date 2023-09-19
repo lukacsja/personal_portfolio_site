@@ -1,3 +1,4 @@
+import SnakeGame from '@/components/snake-game/snake-game';
 import { contactsData } from '@/lib/data';
 import Link from 'next/link';
 
@@ -31,7 +32,8 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <div className='hidden h-[475px] w-[510px] bg-primary-dark bg-gradient-to-br from-[#175553] via-[#1D745A] to-[#175553] lg:block'></div>
+      {/* <div className='hidden h-[475px] w-[510px] bg-primary-dark bg-gradient-to-br from-[#175553] via-[#1D745A] to-[#175553] lg:block'></div> */}
+      <SnakeGame />
     </main>
   );
 }

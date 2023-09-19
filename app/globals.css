@@ -58,3 +58,23 @@
   position: fixed;
   right: 5%;
 }
+
+.gradient {
+  background: linear-gradient(to bottom, #43d9ad21, #237b6d);
+
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  box-shadow: inset 0px 2px 0px 0px #fff 30%;
+}
+
+.foodShadow {
+  box-shadow: 0 0 10px #43d9ad;
+}
+
+.snake {
+  background: linear-gradient(to bottom, #43d9ad 100%, #43d9ad 0%);
+}
+
+.snakeShadow {
+  box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
