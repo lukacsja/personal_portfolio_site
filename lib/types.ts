@@ -42,3 +42,5 @@ export enum FieldErrors {
   messageInvalid = 'Invalid message',
   noError = '',
 }
+
+export type MoveDirections = 'up' | 'down' | 'left' | 'right';

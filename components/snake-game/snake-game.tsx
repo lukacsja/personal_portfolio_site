@@ -1,18 +1,18 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import BoardCorner from './boardcorner';
 import RestartButton from './restart-button';
 import GameEndMessage from './game-end-message';
+import { MoveDirections } from '@/lib/types';
+import ArrowButton from './arrow-button';
+import StartButton from './start-button';
 
 type Position = {
   x: number;
   y: number;
 };
-
-type MoveDirections = 'up' | 'down' | 'left' | 'right';
 
 const SnakeGame = () => {
   const moveStep = 10;
@@ -37,8 +37,10 @@ const SnakeGame = () => {
   const [currentDirection, setCurrentDirection] =
     useState<MoveDirections | null>(null);
 
+  const [foodLeft, setFoodLeft] = useState(25);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameCompleted, setIsGameCompleted] = useState(false);
+  const [isInitialBoardState, setIsInitialBoardState] = useState(true);
 
   const getRandomFoodPosition = (): Position => {
     const maxX = boardWidth;
@@ -68,7 +70,10 @@ const SnakeGame = () => {
     }
   };
 
-  const [foodLeft, setFoodLeft] = useState(10);
+  const startFirstGame = () => {
+    setIsInitialBoardState(false);
+    setCurrentDirection('up');
+  };
 
   const restartGame = () => {
     setHeadPosition({
@@ -208,7 +213,6 @@ const SnakeGame = () => {
 
     if (isGameOver) {
       window.removeEventListener('keydown', handleKeyDown);
-      console.log('REMOVED EVENT LISTENER !!!!!!!!!!!!');
     }
 
     return () => {
@@ -226,6 +230,7 @@ const SnakeGame = () => {
         className='relative overflow-hidden rounded-lg bg-primary-light'
         style={{ width: `${boardWidth}px`, height: `${boardHeight}px` }}
       >
+        {isInitialBoardState && <StartButton startGame={startFirstGame} />}
         {isGameCompleted && isGameOver && (
           <>
             <GameEndMessage message='well done!' />
@@ -264,59 +269,31 @@ const SnakeGame = () => {
             <span>// use keyboard</span>
             <span>// arrows to play</span>
             <div className='mt-[15px] flex flex-col items-center gap-[5px]'>
-              <button
-                disabled={isGameOver}
-                onClick={() => moveSnake('up')}
-                className='flex h-[30px] w-[50px] items-center justify-center rounded-md border-[1px] border-[#1E2D3D] bg-primary-dark'
-              >
-                <Image
-                  src='/icons/gameIcons/arrow-up.svg'
-                  alt='arrow'
-                  className='h-auto w-auto'
-                  width={8}
-                  height={6}
-                />
-              </button>
+              <ArrowButton
+                isGameOver={isGameOver}
+                direction='up'
+                moveSnake={moveSnake}
+                image='/icons/gameIcons/arrow-up.svg'
+              />
               <div className='flex gap-[5px]'>
-                <button
-                  disabled={isGameOver}
-                  onClick={() => moveSnake('left')}
-                  className='flex h-[30px] w-[50px] items-center justify-center rounded-md border-[1px] border-[#1E2D3D] bg-primary-dark'
-                >
-                  <Image
-                    src='/icons/gameIcons/arrow-left.svg'
-                    alt='arrow'
-                    className='h-auto w-auto'
-                    width={8}
-                    height={6}
-                  />
-                </button>
-                <button
-                  disabled={isGameOver}
-                  onClick={() => moveSnake('down')}
-                  className='flex h-[30px] w-[50px] items-center justify-center rounded-md border-[1px] border-[#1E2D3D] bg-primary-dark'
-                >
-                  <Image
-                    src='/icons/gameIcons/arrow-down.svg'
-                    alt='arrow'
-                    className='h-auto w-auto'
-                    width={8}
-                    height={6}
-                  />
-                </button>
-                <button
-                  disabled={isGameOver}
-                  onClick={() => moveSnake('right')}
-                  className='flex h-[30px] w-[50px] items-center justify-center rounded-md border-[1px] border-[#1E2D3D] bg-primary-dark'
-                >
-                  <Image
-                    src='/icons/gameIcons/arrow-right.svg'
-                    alt='arrow'
-                    className='h-auto w-auto'
-                    width={8}
-                    height={6}
-                  />
-                </button>
+                <ArrowButton
+                  isGameOver={isGameOver}
+                  direction='left'
+                  moveSnake={moveSnake}
+                  image='/icons/gameIcons/arrow-left.svg'
+                />
+                <ArrowButton
+                  isGameOver={isGameOver}
+                  direction='down'
+                  moveSnake={moveSnake}
+                  image='/icons/gameIcons/arrow-down.svg'
+                />
+                <ArrowButton
+                  isGameOver={isGameOver}
+                  direction='right'
+                  moveSnake={moveSnake}
+                  image='/icons/gameIcons/arrow-right.svg'
+                />
               </div>
             </div>
           </div>
@@ -336,7 +313,7 @@ const SnakeGame = () => {
         <div className='flex justify-end'>
           <Link
             href='/about'
-            className='rounded-lg border-[1px] border-white px-[14px] py-[10px]'
+            className='rounded-lg border-[1px] border-white px-[14px] py-[10px] transition-all duration-300 hover:border-opacity-50'
           >
             skip
           </Link>

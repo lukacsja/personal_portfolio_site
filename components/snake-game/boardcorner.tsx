@@ -14,7 +14,7 @@ const BoardCorner: React.FC<Position> = ({ position }) => {
         return 'top-[12px] right-[12px]';
       case 'bottom-left':
         return 'bottom-[12px] left-[12px]';
-      case 'bottm-right':
+      case 'bottom-right':
         return 'bottom-[12px] right-[12px]';
       default:
         return '';
@@ -29,6 +29,7 @@ const BoardCorner: React.FC<Position> = ({ position }) => {
         alt='x icon'
         width={6}
         height={6}
+        className='h-auto w-auto'
       />
     </div>
   );
