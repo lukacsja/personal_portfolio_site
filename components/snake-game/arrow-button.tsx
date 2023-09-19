@@ -7,6 +7,7 @@ interface ArrowButtonProps {
   direction: MoveDirections;
   moveSnake: (direction: MoveDirections) => void;
   image: string;
+  isFirstGame: boolean;
 }
 
 const ArrowButton: React.FC<ArrowButtonProps> = ({
@@ -14,10 +15,11 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
   moveSnake,
   direction,
   image,
+  isFirstGame,
 }) => {
   return (
     <button
-      disabled={isGameOver}
+      disabled={isGameOver || isFirstGame}
       onClick={() => moveSnake(direction)}
       className='flex h-[30px] w-[50px] items-center justify-center rounded-md border-[1px] border-[#1E2D3D] bg-primary-dark transition-all duration-300 hover:bg-accent-rose'
     >

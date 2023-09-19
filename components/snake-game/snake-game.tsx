@@ -71,8 +71,8 @@ const SnakeGame = () => {
   };
 
   const startFirstGame = () => {
-    setIsInitialBoardState(false);
     setCurrentDirection('up');
+    setIsInitialBoardState(false);
   };
 
   const restartGame = () => {
@@ -96,7 +96,8 @@ const SnakeGame = () => {
       x: 150,
       y: 100,
     });
-    setFoodLeft(10);
+    setFoodLeft(25);
+    setCurrentDirection('up');
   };
 
   const eatFood = () => {
@@ -209,7 +210,9 @@ const SnakeGame = () => {
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    if (!isInitialBoardState) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
 
     if (isGameOver) {
       window.removeEventListener('keydown', handleKeyDown);
@@ -218,7 +221,7 @@ const SnakeGame = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [headPosition, isGameOver]);
+  }, [headPosition, isGameOver, isInitialBoardState]);
 
   return (
     <div className='gradient relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg lg:flex'>
@@ -250,7 +253,7 @@ const SnakeGame = () => {
         {snakeBody.map((pos, index) => (
           <div
             key={index}
-            className={`snakeShadow absolute h-[10px] w-[10px] bg-secondary-green text-[5px] first:z-[999] first:bg-red-400`}
+            className={`snakeShadow first:z-[999 absolute h-[10px] w-[10px] bg-secondary-green text-[5px]`}
             style={{
               left: `${pos.x}px`,
               top: `${pos.y}px`,
@@ -274,6 +277,7 @@ const SnakeGame = () => {
                 direction='up'
                 moveSnake={moveSnake}
                 image='/icons/gameIcons/arrow-up.svg'
+                isFirstGame={isInitialBoardState}
               />
               <div className='flex gap-[5px]'>
                 <ArrowButton
@@ -281,18 +285,21 @@ const SnakeGame = () => {
                   direction='left'
                   moveSnake={moveSnake}
                   image='/icons/gameIcons/arrow-left.svg'
+                  isFirstGame={isInitialBoardState}
                 />
                 <ArrowButton
                   isGameOver={isGameOver}
                   direction='down'
                   moveSnake={moveSnake}
                   image='/icons/gameIcons/arrow-down.svg'
+                  isFirstGame={isInitialBoardState}
                 />
                 <ArrowButton
                   isGameOver={isGameOver}
                   direction='right'
                   moveSnake={moveSnake}
                   image='/icons/gameIcons/arrow-right.svg'
+                  isFirstGame={isInitialBoardState}
                 />
               </div>
             </div>
