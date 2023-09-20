@@ -2,7 +2,6 @@ import ContactForm from '@/components/contact-form';
 import CurrentTab from '@/components/current-tab-desktop';
 import DropdownItem from '@/components/dropdown-item';
 import PageTitle from '@/components/page-title';
-import SectionDivider from '@/components/sectionDivider';
 import { contactsData } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,7 +10,7 @@ import React from 'react';
 const Contact = () => {
   return (
     <main className='flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
-      <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col lg:border-r-[1px] lg:border-lines'>
+      <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col lg:border-r lg:border-lines'>
         <PageTitle title='_contact-me' />
         <div className='flex flex-col gap-[3px] lg:gap-0'>
           <DropdownItem
@@ -72,7 +71,6 @@ const Contact = () => {
       </div>
       <div className='w-full lg:flex lg:flex-col'>
         <CurrentTab title='contacts' />
-        <SectionDivider direction='horizontal' />
         <ContactForm />
       </div>
     </main>

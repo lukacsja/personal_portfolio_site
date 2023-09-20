@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import React, { useState } from 'react';
-import SectionDivider from './sectionDivider';
 
 type Props = {
   title: string;
@@ -19,7 +18,7 @@ const DropdownItem: React.FC<Props> = ({ title, content }) => {
   return (
     <>
       <div
-        className='flex w-full cursor-pointer select-none items-center gap-3 bg-lines px-[27px] py-[5px] text-[16px] lg:bg-inherit lg:px-[22px]'
+        className='lg: mx-[-27px] flex cursor-pointer select-none items-center gap-3 border-lines bg-lines px-[27px] py-[5px] text-[16px] lg:mx-0 lg:w-full lg:border-b lg:bg-inherit lg:px-[22px]'
         onClick={toggleDropdownIcons}
       >
         <Image
@@ -33,9 +32,6 @@ const DropdownItem: React.FC<Props> = ({ title, content }) => {
         {title}
       </div>
       {isDropdownOpen && content}
-      <div className='hidden lg:block'>
-        <SectionDivider direction='horizontal' />
-      </div>
     </>
   );
 };

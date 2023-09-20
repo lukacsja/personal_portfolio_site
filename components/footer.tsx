@@ -3,43 +3,39 @@
 import React from 'react';
 import { contactsData } from '@/lib/data';
 import Image from 'next/image';
-import SectionDivider from './sectionDivider';
 import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <>
-      <SectionDivider direction='horizontal' />
-      <footer className='flex h-12 items-center justify-between pl-[18px]'>
-        <span className='text-secondary-gray'>find me in:</span>
-        <div className='flex'>
-          <Link
-            href={contactsData.github.url}
-            target='_blank'
-            className='flex h-12 w-12 items-center justify-center border-l-[1px] border-lines transition-all duration-300 hover:bg-lines'
-          >
-            <Image
-              src={contactsData.github.icon}
-              alt='github logo'
-              width='24'
-              height='24'
-            />
-          </Link>
-          <Link
-            href={contactsData.linkedin.url}
-            target='_blank'
-            className='flex h-12 w-12 items-center justify-center border-l-[1px] border-lines transition-all duration-300 hover:bg-lines'
-          >
-            <Image
-              src={contactsData.linkedin.icon}
-              alt='linkedin logo'
-              width='24'
-              height='24'
-            />
-          </Link>
-        </div>
-      </footer>
-    </>
+    <footer className='flex h-12 items-center justify-between border-t border-lines pl-[18px]'>
+      <span className='text-secondary-gray'>find me in:</span>
+      <div className='flex'>
+        <Link
+          href={contactsData.github.url}
+          target='_blank'
+          className='flex h-12 w-12 items-center justify-center border-l-[1px] border-lines transition-all duration-300 hover:bg-lines'
+        >
+          <Image
+            src={contactsData.github.icon}
+            alt='github logo'
+            width='24'
+            height='24'
+          />
+        </Link>
+        <Link
+          href={contactsData.linkedin.url}
+          target='_blank'
+          className='flex h-12 w-12 items-center justify-center border-l-[1px] border-lines transition-all duration-300 hover:bg-lines'
+        >
+          <Image
+            src={contactsData.linkedin.icon}
+            alt='linkedin logo'
+            width='24'
+            height='24'
+          />
+        </Link>
+      </div>
+    </footer>
   );
 };
 

@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { FieldErrors, FormFields, FormData } from '@/lib/types';
 import CodeSnippet from './code-snippet';
-import SectionDivider from './sectionDivider';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -101,7 +100,7 @@ const ContactForm = () => {
 
   return (
     <div className='items-start lg:flex lg:h-full lg:w-full lg:gap-[12px] lg:px-[24px]'>
-      <div className='mt-[42px] flex w-full justify-center text-secondary-gray lg:mt-0 lg:px-[24px] lg:pt-[156px]'>
+      <div className='mt-[42px] flex h-full w-full items-center justify-center text-secondary-gray lg:mt-0 lg:border-r lg:border-lines lg:px-[24px]'>
         {submitted ? (
           <div className='flex flex-col items-center justify-center gap-[20px]'>
             <h2 className='text-[24px] text-text-white'>Thank you! ✌️</h2>
@@ -193,7 +192,6 @@ const ContactForm = () => {
           </form>
         )}
       </div>
-      <SectionDivider direction='vertical' />
       <CodeSnippet
         name={formData.senderName}
         email={formData.senderEmail}

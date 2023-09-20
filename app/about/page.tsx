@@ -6,7 +6,6 @@ import { contactsData, aboutData } from '@/lib/data';
 import Image from 'next/image';
 import DropdownItem from '@/components/dropdown-item';
 import Link from 'next/link';
-import SectionDivider from '@/components/sectionDivider';
 import LineNumbers from '@/components/line-numbers';
 import CurrentTab from '@/components/current-tab-desktop';
 
@@ -39,7 +38,7 @@ const About = () => {
 
   return (
     <main className='flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
-      <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col lg:border-r-[1px] lg:border-lines'>
+      <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col'>
         <PageTitle title='_about-me' />
 
         <div className='flex flex-col gap-[3px] lg:gap-0'>
@@ -113,11 +112,10 @@ const About = () => {
         </div>
       </div>
 
-      <div className='w-full lg:flex lg:flex-col'>
+      <div className='w-full lg:flex lg:flex-col lg:border-l lg:border-lines'>
         <CurrentTab title={getParentSectionTitle(currentContent)} />
-        <SectionDivider direction='horizontal' />
         <div className='items-start lg:flex lg:h-full lg:w-full lg:gap-[12px] lg:px-[24px]'>
-          <div className='mt-[42px] w-full justify-center py-[38px] text-secondary-gray lg:mt-0 lg:flex lg:min-w-[50%] lg:px-[24px]'>
+          <div className='mt-[42px] h-full w-full justify-center py-[38px] text-secondary-gray lg:mt-0 lg:flex lg:min-w-[50%] lg:border-r lg:border-lines lg:px-[24px]'>
             <div className='mb-[16px] lg:hidden'>
               <span className='text-text-white'>
                 {`// ${getParentSectionTitle(currentContent)} `}
@@ -131,7 +129,6 @@ const About = () => {
               </div>
             </div>
           </div>
-          <SectionDivider direction='vertical' />
           <div className='hidden justify-center lg:flex lg:h-full lg:w-full lg:items-start lg:gap-[20px] lg:px-[24px] lg:py-[38px] lg:text-[18px] lg:leading-[27px] lg:text-secondary-gray'>
             code snippet showcase
           </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { navLinks } from '@/lib/data';
 import Link from 'next/link';
-import SectionDivider from './sectionDivider';
 import { useMobileMenu } from '@/context/mobileMenuContext';
 import Footer from './footer';
 
@@ -15,16 +14,14 @@ const MobileMenu = () => {
     >
       <div className='flex flex-col text-text-white'>
         {navLinks.map((link) => (
-          <React.Fragment key={link.href}>
-            <Link
-              onClick={closeMobileMenu}
-              href={link.href}
-              className='p-[18px]'
-            >
-              {link.name}
-            </Link>
-            <SectionDivider direction='horizontal' />
-          </React.Fragment>
+          <Link
+            key={link.href}
+            onClick={closeMobileMenu}
+            href={link.href}
+            className='border-b border-lines p-[18px]'
+          >
+            {link.name}
+          </Link>
         ))}
       </div>
       <div>
