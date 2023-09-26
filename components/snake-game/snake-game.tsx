@@ -320,7 +320,7 @@ const SnakeGame = () => {
         <div className='flex justify-end'>
           <Link
             href='/about'
-            className='rounded-lg border-[1px] border-white px-[14px] py-[10px] transition-all duration-300 hover:border-opacity-50'
+            className='rounded-lg border border-white px-[14px] py-[10px] transition-all duration-300 hover:border-opacity-50'
           >
             skip
           </Link>

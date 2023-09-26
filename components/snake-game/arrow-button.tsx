@@ -21,7 +21,7 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
     <button
       disabled={isGameOver || isFirstGame}
       onClick={() => moveSnake(direction)}
-      className='flex h-[30px] w-[50px] items-center justify-center rounded-md border-[1px] border-[#1E2D3D] bg-primary-dark transition-all duration-300 hover:bg-accent-rose'
+      className='flex h-[30px] w-[50px] items-center justify-center rounded-md border border-[#1E2D3D] bg-primary-dark transition-all duration-300 hover:bg-accent-rose'
     >
       <Image
         src={image}

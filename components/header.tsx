@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { navLinks } from '@/lib/data';
 import Link from 'next/link';
 import { useMobileMenu } from '@/context/mobileMenuContext';
-import MobileMenu from './mobileMenu';
+import MobileMenu from './mobile-menu';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 

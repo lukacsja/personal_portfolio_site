@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 export type ContactsData = {
   github: {
     title: string;
@@ -44,3 +46,15 @@ export enum FieldErrors {
 }
 
 export type MoveDirections = 'up' | 'down' | 'left' | 'right';
+
+export type Technology = {
+  title: string;
+  icon: string;
+};
+
+export type Project = {
+  title: string;
+  url: string;
+  image: string;
+  desc: string;
+};

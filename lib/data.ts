@@ -5,6 +5,12 @@ import phoneIcon from '@/public/icons/phone.svg';
 import folderRose from '@/public/icons/folder-rose.svg';
 import folderBlue from '@/public/icons/folder-blue.svg';
 import folderGreen from '@/public/icons/folder-green.svg';
+import reactLogo from '@/public/icons/technologies/react.svg';
+import htmlLogo from '@/public/icons/technologies/html.svg';
+import cssLogo from '@/public/icons/technologies/css.svg';
+import project1Image from '@/public/images/project1.jpg';
+import project2Image from '@/public/images/project1.jpg';
+import project3Image from '@/public/images/project1.jpg';
 import { ContactsData } from './types';
 
 export const navLinks = [
@@ -123,3 +129,88 @@ export const aboutData = [
     ],
   },
 ];
+
+export const technologies = [
+  {
+    title: 'React',
+    icon: reactLogo,
+  },
+  {
+    title: 'HTML',
+    icon: htmlLogo,
+  },
+  {
+    title: 'CSS',
+    icon: cssLogo,
+  },
+];
+
+export const projectsList = [
+  {
+    title: '_title-1',
+    url: 'https://github.com',
+    image: project1Image,
+    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
+    tags: ['html', 'css', 'react', 'nextjs', 'tailwind', 'js'],
+  },
+  {
+    title: '_title-2',
+    url: 'https://github.com',
+    image: project2Image,
+    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
+    tags: ['html', 'css', 'react'],
+  },
+  {
+    title: '_title-3',
+    url: 'https://github.com',
+    image: project3Image,
+    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
+    tags: ['nextjs', 'tailwind', 'js'],
+  },
+  {
+    title: '_title-4',
+    url: 'https://github.com',
+    image: project1Image,
+    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
+    tags: ['html', 'css', 'react', 'nextjs', 'tailwind', 'js'],
+  },
+  {
+    title: '_title-5',
+    url: 'https://github.com',
+    image: project2Image,
+    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
+    tags: ['html', 'css', 'react'],
+  },
+  {
+    title: '_title-6',
+    url: 'https://github.com',
+    image: project1Image,
+    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
+    tags: ['html', 'css', 'react', 'nextjs', 'tailwind', 'js'],
+  },
+  {
+    title: '_title-7',
+    url: 'https://github.com',
+    image: project2Image,
+    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
+    tags: ['html', 'css', 'react'],
+  },
+  {
+    title: '_title-8',
+    url: 'https://github.com',
+    image: project1Image,
+    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
+    tags: ['html', 'css', 'react', 'nextjs', 'tailwind', 'js'],
+  },
+  {
+    title: '_title-9',
+    url: 'https://github.com',
+    image: project2Image,
+    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
+    tags: ['html', 'css', 'react'],
+  },
+];
+
+// tags: 'sass' 'javascript'
+
+// const tags = technoglogies.map(tech => tech.title) => setcurrentfilters
