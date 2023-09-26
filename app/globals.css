@@ -27,6 +27,14 @@
   }
 }
 
+.bodyHeight {
+  height: calc(100vh - 1px);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
 .gradient-circle {
   width: 300px;
   height: 300px;

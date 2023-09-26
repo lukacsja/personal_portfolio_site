@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { navLinks } from '@/lib/data';
 import Link from 'next/link';
 import { useMobileMenu } from '@/context/mobileMenuContext';
@@ -12,9 +12,17 @@ const Header = () => {
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
   const pathName = usePathname();
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [isMobileMenuOpen]);
+
   return (
     <>
-      <header className='flex h-[56px] min-h-[56px] w-full items-center justify-between border-b border-lines px-[18px] text-secondary-gray lg:justify-normal lg:px-[0]'>
+      <header className='fixed left-0 top-0 z-[999] flex h-[56px] min-h-[56px] w-full flex-none items-center justify-between border-b border-lines bg-inherit px-[18px] text-secondary-gray lg:justify-normal lg:px-[0]'>
         <div className='lg:w-[310px]'>
           <Link href='/' className='p-[18px] pr-0 lg:pl-[22px]'>
             janos-lukacs

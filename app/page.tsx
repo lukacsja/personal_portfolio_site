@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className='flex-1 px-[27px] pb-[84px] pt-[96px] lg:flex lg:items-center lg:justify-center lg:gap-20 lg:px-12 lg:py-0'>
+    <main className='mt-[56px] flex-1 px-[27px] pb-[84px] pt-[96px] lg:flex lg:items-center lg:justify-center lg:gap-20 lg:px-12 lg:py-0'>
       <div className='gradient-circle top-left'></div>
       <div className='gradient-circle bottom-right'></div>
       <div className='flex h-full flex-col justify-between lg:justify-evenly'>
@@ -32,7 +32,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-      {/* <div className='hidden h-[475px] w-[510px] bg-primary-dark bg-gradient-to-br from-[#175553] via-[#1D745A] to-[#175553] lg:block'></div> */}
       <SnakeGame />
     </main>
   );

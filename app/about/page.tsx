@@ -37,7 +37,7 @@ const About = () => {
   };
 
   return (
-    <main className='flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
+    <main className='mt-[56px] flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
       <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col'>
         <PageTitle title='_about-me' />
 

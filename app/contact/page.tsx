@@ -9,8 +9,8 @@ import React from 'react';
 
 const Contact = () => {
   return (
-    <main className='flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
-      <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col lg:border-r lg:border-lines'>
+    <main className='mt-[56px] flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
+      <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col'>
         <PageTitle title='_contact-me' />
         <div className='flex flex-col gap-[3px] lg:gap-0'>
           <DropdownItem
@@ -69,7 +69,7 @@ const Contact = () => {
           />
         </div>
       </div>
-      <div className='w-full lg:flex lg:flex-col'>
+      <div className='w-full lg:flex lg:flex-col lg:border-l lg:border-lines'>
         <CurrentTab title='contacts' />
         <ContactForm />
       </div>
