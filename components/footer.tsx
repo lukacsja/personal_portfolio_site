@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className='flex h-12 w-full items-center justify-between border-t border-lines bg-inherit pl-[18px]'>
+    <footer className='box-border flex h-[48px] w-full items-center justify-between border-t border-lines bg-inherit pl-[18px]'>
       <span className='text-secondary-gray'>find me in:</span>
       <div className='flex'>
         <Link

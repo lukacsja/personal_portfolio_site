@@ -14,11 +14,12 @@ type Position = {
   y: number;
 };
 
-const SnakeGame = () => {
-  const moveStep = 10;
-  const boardWidth = 240;
-  const boardHeight = 400;
+const moveStep = 10;
+const boardWidth = 240;
+const boardHeight = 400;
+const foodToCollect = 10;
 
+const SnakeGame = () => {
   const [headPosition, setHeadPosition] = useState<Position>({
     x: 210,
     y: 210,
@@ -37,7 +38,7 @@ const SnakeGame = () => {
   const [currentDirection, setCurrentDirection] =
     useState<MoveDirections | null>(null);
 
-  const [foodLeft, setFoodLeft] = useState(15);
+  const [foodLeft, setFoodLeft] = useState(foodToCollect);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameCompleted, setIsGameCompleted] = useState(false);
   const [isInitialBoardState, setIsInitialBoardState] = useState(true);
@@ -93,7 +94,7 @@ const SnakeGame = () => {
       x: 150,
       y: 100,
     });
-    setFoodLeft(25);
+    setFoodLeft(foodToCollect);
     setCurrentDirection('up');
   }, []);
 

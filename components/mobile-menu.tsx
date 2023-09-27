@@ -2,6 +2,7 @@ import React from 'react';
 import { navLinks } from '@/lib/data';
 import Link from 'next/link';
 import { useMobileMenu } from '@/context/mobileMenuContext';
+import Footer from './footer';
 
 const MobileMenu = () => {
   const { isMobileMenuOpen, closeMobileMenu } = useMobileMenu();
@@ -23,6 +24,7 @@ const MobileMenu = () => {
           </Link>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

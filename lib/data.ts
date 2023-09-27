@@ -178,7 +178,7 @@ export const projectsList = [
     url: 'https://github.com',
     image: project2Image,
     desc: 'Duis aute irure dolor in velit esse cillum dolore.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
+    tags: ['CSS', 'JavaScript'],
   },
   {
     title: '_title-3',
@@ -192,7 +192,7 @@ export const projectsList = [
     url: 'https://github.com',
     image: project1Image,
     desc: 'Duis aute irure dolor in velit esse cillum dolore.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
+    tags: ['CSS', 'JavaScript'],
   },
   {
     title: '_title-5',
