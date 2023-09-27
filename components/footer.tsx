@@ -18,8 +18,8 @@ const Footer = () => {
           <Image
             src={contactsData.github.icon}
             alt='github logo'
-            width='24'
-            height='24'
+            width={24}
+            height={24}
           />
         </Link>
         <Link
@@ -30,8 +30,8 @@ const Footer = () => {
           <Image
             src={contactsData.linkedin.icon}
             alt='linkedin logo'
-            width='24'
-            height='24'
+            width={24}
+            height={24}
           />
         </Link>
       </div>

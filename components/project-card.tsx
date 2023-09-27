@@ -13,13 +13,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <div className='flex h-auto w-full max-w-[385px] flex-col overflow-hidden rounded-lg border border-lines'>
-      <div className='w-full'>
+      <div className='relative h-auto w-auto'>
         <Image
           src={image}
           alt='project image'
-          width={300}
-          height={150}
-          className='w-full object-contain'
+          width={1024}
+          height={1024}
+          className='w-auto'
+          priority
+          placeholder='blur'
         />
       </div>
       <div className='flex w-full flex-col gap-[24px] p-[30px]'>

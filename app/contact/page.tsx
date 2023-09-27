@@ -21,6 +21,8 @@ const Contact = () => {
                   <Image
                     src={contactsData.email.icon}
                     alt={contactsData.email.title}
+                    width={14}
+                    height={14}
                     priority
                   />
                   <Link href={`mailto:${contactsData.email.address}`}>
@@ -31,6 +33,8 @@ const Contact = () => {
                   <Image
                     src={contactsData.phone.icon}
                     alt={contactsData.phone.title}
+                    width={14}
+                    height={14}
                     priority
                   />
                   <Link href={`tel:${contactsData.phone.number}`}>
@@ -48,6 +52,8 @@ const Contact = () => {
                   <Image
                     src={contactsData.github.icon}
                     alt={contactsData.github.title}
+                    width={14}
+                    height={14}
                     priority
                   />
                   <Link href={contactsData.github.url} target='_blank'>
@@ -58,6 +64,8 @@ const Contact = () => {
                   <Image
                     src={contactsData.linkedin.icon}
                     alt={contactsData.linkedin.title}
+                    width={14}
+                    height={14}
                     priority
                   />
                   <Link href={contactsData.linkedin.url} target='_blank'>

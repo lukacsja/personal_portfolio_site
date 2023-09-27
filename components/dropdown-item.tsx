@@ -24,8 +24,8 @@ const DropdownItem: React.FC<Props> = ({ title, content }) => {
         <Image
           src='/icons/arrow-right-fill.svg'
           alt='open menu'
-          width='8'
-          height='8'
+          width={8}
+          height={8}
           priority
           className={`${isDropdownOpen ? 'rotate-90' : ''} transition-all`}
         />

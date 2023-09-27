@@ -15,9 +15,9 @@ const CurrentTab: React.FC<CurrentTabProps> = ({ title, onClose }) => {
         {onClose ? (
           <Image
             src='/icons/close-icon.svg'
-            alt='close'
-            width='18'
-            height='18'
+            alt='close menu'
+            width={18}
+            height={18}
             className='cursor-pointer py-[5px] transition-all duration-300 hover:scale-150'
             onClick={() => onClose(title)}
           />
@@ -25,9 +25,9 @@ const CurrentTab: React.FC<CurrentTabProps> = ({ title, onClose }) => {
           <Link href='/' className='flex items-center justify-center'>
             <Image
               src='/icons/close-icon.svg'
-              alt='close'
-              width='18'
-              height='18'
+              alt='close menu'
+              width={18}
+              height={18}
               className='cursor-pointer py-[5px] transition-all duration-300 hover:scale-150'
             />
           </Link>

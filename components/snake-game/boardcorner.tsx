@@ -26,7 +26,7 @@ const BoardCorner: React.FC<Position> = ({ position }) => {
     >
       <Image
         src='/icons/gameIcons/gametable-x.svg'
-        alt='x icon'
+        alt='x (close) icon'
         width={6}
         height={6}
         className='h-auto w-auto'

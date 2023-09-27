@@ -56,16 +56,22 @@ const About = () => {
                     >
                       <Image
                         src='/icons/arrow-right.svg'
-                        alt='asd'
+                        alt='arrow right'
                         width={16}
                         height={16}
+                        priority
                         className={`${
                           item.title === currentContent ? 'rotate-90' : ''
                         } h-auto w-auto transition-all`}
-                        priority
                       />
                       <div className='flex select-none gap-[10px] transition-all duration-300'>
-                        <Image src={item.icon} alt={item.title} priority />
+                        <Image
+                          src={item.icon}
+                          alt={item.title}
+                          width={14}
+                          height={14}
+                          priority
+                        />
                         <p
                           className={
                             item.title === currentContent
@@ -90,6 +96,8 @@ const About = () => {
                   <Image
                     src={contactsData.email.icon}
                     alt={contactsData.email.title}
+                    width={14}
+                    height={14}
                     priority
                   />
                   <Link href={`mailto:${contactsData.email.address}`}>
@@ -100,6 +108,8 @@ const About = () => {
                   <Image
                     src={contactsData.phone.icon}
                     alt={contactsData.phone.title}
+                    width={14}
+                    height={14}
                     priority
                   />
                   <Link href={`tel:${contactsData.phone.number}`}>

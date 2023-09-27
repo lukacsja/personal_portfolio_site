@@ -75,7 +75,13 @@ const Projects = () => {
                       htmlFor={`${tech.title}-checkbox`}
                       className='flex select-none gap-[10px] transition-all duration-300'
                     >
-                      <Image src={tech.icon} alt={tech.title} priority />
+                      <Image
+                        src={tech.icon}
+                        alt={tech.title}
+                        width={14}
+                        height={14}
+                        priority
+                      />
                       <p
                         className={
                           currentFilters.includes(tech.title)
