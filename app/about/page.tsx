@@ -113,7 +113,10 @@ const About = () => {
       </div>
 
       <div className='w-full lg:flex lg:flex-col lg:border-l lg:border-lines'>
-        <CurrentTab title={getParentSectionTitle(currentContent)} />
+        <div className='hidden border-b border-lines lg:flex'>
+          <CurrentTab title={getParentSectionTitle(currentContent) || ''} />
+        </div>
+
         <div className='items-start lg:flex lg:h-full lg:w-full lg:gap-[12px] lg:px-[24px]'>
           <div className='mt-[42px] h-full w-full justify-center py-[38px] text-secondary-gray lg:mt-0 lg:flex lg:min-w-[50%] lg:border-r lg:border-lines lg:px-[24px]'>
             <div className='mb-[16px] lg:hidden'>

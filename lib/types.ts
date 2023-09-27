@@ -55,6 +55,7 @@ export type Technology = {
 export type Project = {
   title: string;
   url: string;
-  image: string;
+  image: StaticImageData;
   desc: string;
+  tags: string[];
 };

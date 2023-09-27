@@ -1,21 +1,27 @@
 'use client';
 
 import PageTitle from '@/components/page-title';
-import React, { useState } from 'react';
-import { projectsList, technologies } from '@/lib/data';
+import React, { useCallback, useEffect, useState } from 'react';
+import { projectsList, technologies, technologyTags } from '@/lib/data';
 import DropdownItem from '@/components/dropdown-item';
 import Image from 'next/image';
 import CurrentTab from '@/components/current-tab-desktop';
-import { Technology } from '@/lib/types';
 import ProjectCard from '@/components/project-card';
+import { Project } from '@/lib/types';
 
 const Projects = () => {
-  // const filteredTechnologies = technologies.filter((tech) =>
-  //   currentFilters.includes(tech.title)
-  // );
-  const [currentFilters, setCurrentFilters] = useState<string[]>(['HTML']);
-  // const [filteredTechs, setFilteredTechs] =
-  //   useState<Technology[]>(technologies);
+  const [currentFilters, setCurrentFilters] =
+    useState<string[]>(technologyTags);
+
+  const [filteredProjects, setFilteredProjects] =
+    useState<Project[]>(projectsList);
+
+  const filterProjects = useCallback(() => {
+    const filtered = projectsList.filter((project) => {
+      return currentFilters.every((filter) => project.tags.includes(filter));
+    });
+    setFilteredProjects(filtered);
+  }, [currentFilters]);
 
   const handleCheckboxChange = (techTitle: string) => {
     if (currentFilters.includes(techTitle)) {
@@ -24,6 +30,10 @@ const Projects = () => {
       setCurrentFilters([...currentFilters, techTitle]);
     }
   };
+
+  useEffect(() => {
+    filterProjects();
+  }, [currentFilters]);
 
   return (
     <main className='mt-[56px] flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
@@ -85,26 +95,48 @@ const Projects = () => {
       </div>
 
       <div className='w-full lg:flex lg:flex-col lg:border-l lg:border-lines'>
-        <CurrentTab title='// projects / filters' />
+        <div className='hidden border-b border-lines lg:flex'>
+          {currentFilters.map((filter) => (
+            <CurrentTab
+              title={filter}
+              key={filter}
+              onClose={() => handleCheckboxChange(filter)}
+            />
+          ))}
+        </div>
         <div className='mt-[42px] lg:hidden'>
           <span className='text-text-white'>{`// projects`}</span>
-          <span>{` / all`}</span>
+          {currentFilters.length === technologies.length ||
+          !currentFilters.length ? (
+            <span className='text-secondary-gray'>{` / all`}</span>
+          ) : (
+            <>
+              <span className='text-secondary-gray'> / </span>
+              {currentFilters.map((filter) => (
+                <span
+                  key={filter}
+                  className='text-secondary-gray'
+                >{`${filter}; `}</span>
+              ))}
+            </>
+          )}
         </div>
         <div className='mt-[16px] lg:mt-0 lg:flex lg:h-full lg:w-full lg:items-center lg:justify-center lg:gap-[12px] lg:p-[48px]'>
           <ul className='flex w-full flex-col justify-center gap-[20px] text-secondary-gray md:grid md:grid-cols-2 md:gap-[30px] lg:grid lg:grid-cols-3 lg:gap-[40px]'>
-            {projectsList.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <li className='' key={project.title}>
                 <div className='mb-[16px]'>
-                  <span className='text-secondary-blue'>{`Project ${
-                    index + 1
-                  }`}</span>
+                  <span className='text-secondary-blue'>
+                    {`Project ${index + 1}`}
+                  </span>
                   <span>{` / ${project.title}`}</span>
                 </div>
                 <ProjectCard
                   title={project.title}
                   url={project.url}
-                  image='/images/project1.jpg'
+                  image={project.image}
                   desc={project.desc}
+                  tags={project.tags}
                 />
               </li>
             ))}

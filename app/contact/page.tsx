@@ -69,8 +69,11 @@ const Contact = () => {
           />
         </div>
       </div>
+
       <div className='w-full lg:flex lg:flex-col lg:border-l lg:border-lines'>
-        <CurrentTab title='contacts' />
+        <div className='hidden border-b border-lines lg:flex'>
+          <CurrentTab title='contacts' />
+        </div>
         <ContactForm />
       </div>
     </main>

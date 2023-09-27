@@ -19,8 +19,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           alt='project image'
           width={300}
           height={150}
-          objectFit='cover'
-          className='w-full'
+          className='w-full object-contain'
         />
       </div>
       <div className='flex w-full flex-col gap-[24px] p-[30px]'>
