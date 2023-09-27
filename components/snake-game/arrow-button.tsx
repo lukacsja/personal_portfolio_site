@@ -28,7 +28,7 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
         alt='arrow'
         className='h-auto w-auto'
         width={8}
-        height={6}
+        height={8}
       />
     </button>
   );

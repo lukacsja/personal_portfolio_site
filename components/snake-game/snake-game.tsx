@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import BoardCorner from './boardcorner';
 import RestartButton from './restart-button';
 import GameEndMessage from './game-end-message';
@@ -37,17 +37,14 @@ const SnakeGame = () => {
   const [currentDirection, setCurrentDirection] =
     useState<MoveDirections | null>(null);
 
-  const [foodLeft, setFoodLeft] = useState(25);
+  const [foodLeft, setFoodLeft] = useState(15);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameCompleted, setIsGameCompleted] = useState(false);
   const [isInitialBoardState, setIsInitialBoardState] = useState(true);
 
-  const getRandomFoodPosition = (): Position => {
-    const maxX = boardWidth;
-    const maxY = boardHeight;
-
-    const randomX = Math.floor(Math.random() * (maxX / 10)) * 10;
-    const randomY = Math.floor(Math.random() * (maxY / 10)) * 10;
+  const getRandomFoodPosition = useCallback((): Position => {
+    const randomX = Math.floor(Math.random() * (boardWidth / 10)) * 10;
+    const randomY = Math.floor(Math.random() * (boardHeight / 10)) * 10;
 
     const isFoodOnSnake = snakeBody.some(
       (cords) => cords.x === randomX && cords.y === randomY
@@ -61,21 +58,21 @@ const SnakeGame = () => {
       x: randomX,
       y: randomY,
     };
-  };
+  }, [boardHeight, boardWidth]);
 
-  const generateNewFood = () => {
+  const generateNewFood = useCallback(() => {
     if (foodLeft > 0) {
       setFoodLeft((prevValue) => prevValue - 1);
       setFoodPosition(getRandomFoodPosition());
     }
-  };
+  }, [foodLeft]);
 
   const startFirstGame = () => {
     setCurrentDirection('up');
     setIsInitialBoardState(false);
   };
 
-  const restartGame = () => {
+  const restartGame = useCallback(() => {
     setHeadPosition({
       x: 210,
       y: 210,
@@ -98,7 +95,7 @@ const SnakeGame = () => {
     });
     setFoodLeft(25);
     setCurrentDirection('up');
-  };
+  }, []);
 
   const eatFood = () => {
     if (
@@ -224,7 +221,7 @@ const SnakeGame = () => {
   }, [headPosition, isGameOver, isInitialBoardState]);
 
   return (
-    <div className='gradient relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg lg:flex'>
+    <div className='gradient relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg shadow-xl lg:flex'>
       <BoardCorner position='top-left' />
       <BoardCorner position='top-right' />
       <BoardCorner position='bottom-left' />
