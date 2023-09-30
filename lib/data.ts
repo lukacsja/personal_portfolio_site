@@ -8,10 +8,9 @@ import folderGreen from '@/public/icons/folder-green.svg';
 import reactLogo from '@/public/icons/technologies/react.svg';
 import htmlLogo from '@/public/icons/technologies/html.svg';
 import cssLogo from '@/public/icons/technologies/css.svg';
-import project1Image from '@/public/images/project1.png';
-import project2Image from '@/public/images/project1.png';
-import project3Image from '@/public/images/project1.png';
-import { ContactsData } from './types';
+import phoneWebshopImage from '@/public/images/phone-webshop.png';
+import portrolioSiteImage from '@/public/images/portfolio-site.png';
+import { ContactsData, TechItem } from './types';
 
 export const navLinks = [
   {
@@ -131,83 +130,83 @@ export const aboutData = [
 ];
 
 export const technologies = [
-  // {
-  //   title: 'React',
-  //   icon: reactLogo,
-  // },
   {
-    title: 'HTML',
+    title: TechItem.html,
     icon: htmlLogo,
   },
   {
-    title: 'CSS',
+    title: TechItem.css,
     icon: cssLogo,
   },
-  // {
-  //   title: 'Next.js',
-  //   icon: htmlLogo,
-  // },
-  // {
-  //   title: 'Tailwind',
-  //   icon: htmlLogo,
-  // },
-  // {
-  //   title: 'SASS',
-  //   icon: htmlLogo,
-  // },
   {
-    title: 'JavaScript',
+    title: TechItem.js,
     icon: htmlLogo,
   },
-  // {
-  //   title: 'TypeScript',
-  //   icon: htmlLogo,
-  // },
+  {
+    title: TechItem.sass,
+    icon: htmlLogo,
+  },
+  {
+    title: TechItem.tw,
+    icon: htmlLogo,
+  },
+  {
+    title: TechItem.ts,
+    icon: htmlLogo,
+  },
+  {
+    title: TechItem.react,
+    icon: reactLogo,
+  },
+  {
+    title: TechItem.next,
+    icon: htmlLogo,
+  },
 ];
 
 export const projectsList = [
   {
-    title: '_title-1',
+    id: 1,
+    title: '_portfolio-site',
     url: 'https://github.com',
-    image: project1Image,
-    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
-    tags: ['HTML', 'CSS', 'React'],
+    image: portrolioSiteImage,
+    desc: 'The site you are currently visiting - built with Next.js 13.',
+    tags: [
+      TechItem.html,
+      TechItem.css,
+      TechItem.js,
+      TechItem.react,
+      TechItem.sass,
+    ],
   },
   {
-    title: '_title-2',
+    id: 2,
+    title: '_calculator-app',
     url: 'https://github.com',
-    image: project2Image,
-    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
-    tags: ['CSS', 'JavaScript'],
+    image: phoneWebshopImage,
+    desc: 'A simple calculator app built with Next.js.',
+    tags: [
+      TechItem.html,
+      TechItem.css,
+      TechItem.js,
+      TechItem.tw,
+      TechItem.react,
+      TechItem.next,
+    ],
   },
   {
-    title: '_title-3',
+    id: 3,
+    title: '_react-webshop',
     url: 'https://github.com',
-    image: project3Image,
-    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-  },
-  {
-    title: '_title-4',
-    url: 'https://github.com',
-    image: project1Image,
-    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
-    tags: ['CSS', 'JavaScript'],
-  },
-  {
-    title: '_title-5',
-    url: 'https://github.com',
-    image: project2Image,
-    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
-    tags: ['HTML', 'JavaScript'],
-  },
-  {
-    title: '_title-6',
-    url: 'https://github.com',
-    image: project1Image,
-    desc: 'Duis aute irure dolor in velit esse cillum dolore.',
-    tags: ['HTML', 'CSS', 'React', 'Next.js', 'JavaScript'],
+    image: phoneWebshopImage,
+    desc: 'A phone webshop built with React & TypeScript.',
+    tags: [
+      TechItem.html,
+      TechItem.css,
+      TechItem.js,
+      TechItem.react,
+      TechItem.next,
+      TechItem.tw,
+    ],
   },
 ];
-
-export const technologyTags = technologies.map((tech) => tech.title);

@@ -1,33 +1,35 @@
 'use client';
 
-import PageTitle from '@/components/page-title';
-import React, { useCallback, useEffect, useState } from 'react';
-import { projectsList, technologies, technologyTags } from '@/lib/data';
-import DropdownItem from '@/components/dropdown-item';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import PageTitle from '@/components/page-title';
+import DropdownItem from '@/components/dropdown-item';
 import CurrentTab from '@/components/current-tab-desktop';
 import ProjectCard from '@/components/project-card';
-import { Project } from '@/lib/types';
+import { projectsList, technologies } from '@/lib/data';
+import { Project, TechItem } from '@/lib/types';
 
 const Projects = () => {
-  const [currentFilters, setCurrentFilters] =
-    useState<string[]>(technologyTags);
-
+  const [currentFilters, setCurrentFilters] = useState<TechItem[]>(
+    technologies.map((tech) => tech.title)
+  );
   const [filteredProjects, setFilteredProjects] =
     useState<Project[]>(projectsList);
 
-  const filterProjects = useCallback(() => {
+  const filterProjects = () => {
     const filtered = projectsList.filter((project) => {
-      return currentFilters.every((filter) => project.tags.includes(filter));
+      return currentFilters.some((tech) => project.tags.includes(tech));
     });
     setFilteredProjects(filtered);
-  }, [currentFilters]);
+  };
 
-  const handleCheckboxChange = (techTitle: string) => {
-    if (currentFilters.includes(techTitle)) {
-      setCurrentFilters(currentFilters.filter((title) => title !== techTitle));
+  const handleCheckboxChange = (tech: TechItem) => {
+    if (currentFilters.includes(tech)) {
+      const newFilters = currentFilters.filter((item) => item !== tech);
+      setCurrentFilters(newFilters);
     } else {
-      setCurrentFilters([...currentFilters, techTitle]);
+      const newFilters = [...currentFilters, tech];
+      setCurrentFilters(newFilters);
     }
   };
 
@@ -48,15 +50,16 @@ const Projects = () => {
                 {technologies.map((tech) => (
                   <div
                     key={tech.title}
-                    className='flex cursor-pointer items-center gap-[24px] hover:text-text-white'
+                    className='flex cursor-pointer items-center gap-[24px] hover:bg-primary-medium hover:text-text-white
+                  '
+                    onClick={() => handleCheckboxChange(tech.title)}
                   >
                     <div
-                      onClick={() => handleCheckboxChange(tech.title)}
                       className={`${
                         currentFilters.includes(tech.title)
                           ? 'bg-secondary-gray'
                           : 'bg-inherit'
-                      } flex h-[18px] w-[18px] items-center justify-center rounded-sm border border-secondary-gray transition-all duration-300 checked:bg-secondary-gray`}
+                      } flex h-[18px] w-[18px] items-center justify-center rounded-sm border border-secondary-gray transition-all duration-300`}
                     >
                       <Image
                         src='/icons/technologies/pipe.svg'
@@ -71,10 +74,7 @@ const Projects = () => {
                         } h-auto w-auto`}
                       />
                     </div>
-                    <label
-                      htmlFor={`${tech.title}-checkbox`}
-                      className='flex select-none gap-[10px] transition-all duration-300'
-                    >
+                    <div className='flex select-none gap-[10px] transition-all duration-300'>
                       <Image
                         src={tech.icon}
                         alt={tech.title}
@@ -91,7 +91,7 @@ const Projects = () => {
                       >
                         {tech.title}
                       </p>
-                    </label>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -133,7 +133,7 @@ const Projects = () => {
               <li className='' key={project.title}>
                 <div className='mb-[16px]'>
                   <span className='text-secondary-blue'>
-                    {`Project ${index + 1}`}
+                    {`Project ${project.id}`}
                   </span>
                   <span>{` / ${project.title}`}</span>
                 </div>
@@ -143,6 +143,7 @@ const Projects = () => {
                   image={project.image}
                   desc={project.desc}
                   tags={project.tags}
+                  id={project.id}
                 />
               </li>
             ))}

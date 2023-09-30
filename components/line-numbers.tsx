@@ -31,7 +31,7 @@ const LineNumbers: React.FC<LineNumbersProps> = ({
   }, [codeContainerRef, lineHeight]);
 
   return (
-    <div className='flex flex-col items-end'>
+    <div className='flex select-none flex-col items-end'>
       {lineNumbers?.map((number) => <div key={number}>{number}</div>)}
     </div>
   );

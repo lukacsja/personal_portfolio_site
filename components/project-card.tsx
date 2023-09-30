@@ -5,26 +5,21 @@ import { Project } from '@/lib/types';
 
 type ProjectCardProps = Project;
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
-  title,
-  url,
-  image,
-  desc,
-}) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ url, image, desc }) => {
   return (
-    <div className='flex h-auto w-full max-w-[385px] flex-col overflow-hidden rounded-lg border border-lines'>
-      <div className='relative h-auto w-auto'>
+    <div className='flex h-auto w-auto max-w-[385px] flex-col overflow-hidden rounded-lg border border-lines transition-all duration-300 hover:scale-105'>
+      <div className='h-1/2 w-auto'>
         <Image
           src={image}
           alt='project image'
           width={1024}
           height={1024}
-          className='w-auto'
+          className='w-auto object-contain'
           priority
           placeholder='blur'
         />
       </div>
-      <div className='flex w-full flex-col gap-[24px] p-[30px]'>
+      <div className='flex h-1/2 w-full flex-col gap-[24px] p-[30px]'>
         <p className='w-full leading-[130%] text-secondary-gray'>{desc}</p>
         <Link
           href={url}
