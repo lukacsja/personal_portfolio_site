@@ -12,7 +12,7 @@ const ScoreBoard: React.FC<ScoreBoardProps> = ({ foodLeft }) => {
         {Array.from({ length: foodLeft }, (value, index) => (
           <div
             key={index}
-            className={`foodShadow h-[10px] w-[10px] rounded-full bg-gradients-green transition-all duration-500`}
+            className={`food-shadow h-[10px] w-[10px] rounded-full bg-gradients-green transition-all duration-300`}
           ></div>
         ))}
       </div>
