@@ -8,6 +8,7 @@ import GameEndMessage from './game-end-message';
 import { MoveDirections } from '@/lib/types';
 import ArrowButton from './arrow-button';
 import StartButton from './start-button';
+import ScoreBoard from './score-board';
 
 type Position = {
   x: number;
@@ -30,6 +31,11 @@ const SnakeGame = () => {
     { x: 210, y: 230 },
     { x: 210, y: 240 },
     { x: 210, y: 250 },
+    { x: 210, y: 260 },
+    { x: 210, y: 270 },
+    { x: 210, y: 280 },
+    { x: 210, y: 290 },
+    { x: 210, y: 300 },
   ]);
   const [foodPosition, setFoodPosition] = useState<Position>({
     x: 150,
@@ -85,6 +91,11 @@ const SnakeGame = () => {
       { x: 210, y: 230 },
       { x: 210, y: 240 },
       { x: 210, y: 250 },
+      { x: 210, y: 260 },
+      { x: 210, y: 270 },
+      { x: 210, y: 280 },
+      { x: 210, y: 290 },
+      { x: 210, y: 300 },
     ];
 
     setSnakeBody(initialSnakeBody);
@@ -188,6 +199,19 @@ const SnakeGame = () => {
     }
   }, [headPosition]);
 
+  const roundSnakeHead = useCallback(() => {
+    switch (currentDirection) {
+      case 'down':
+        return 'b';
+      case 'right':
+        return 'r';
+      case 'left':
+        return 'l';
+      default:
+        return 't';
+    }
+  }, [currentDirection]);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       switch (event.key) {
@@ -222,13 +246,13 @@ const SnakeGame = () => {
   }, [headPosition, isGameOver, isInitialBoardState]);
 
   return (
-    <div className='gradient relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg shadow-xl lg:flex'>
+    <div className='game-board relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg lg:flex'>
       <BoardCorner position='top-left' />
       <BoardCorner position='top-right' />
       <BoardCorner position='bottom-left' />
       <BoardCorner position='bottom-right' />
       <div
-        className='relative overflow-hidden rounded-lg bg-primary-light'
+        className='boardShadow relative overflow-hidden rounded-lg bg-primary-light'
         style={{ width: `${boardWidth}px`, height: `${boardHeight}px` }}
       >
         {isInitialBoardState && <StartButton startGame={startFirstGame} />}
@@ -248,20 +272,26 @@ const SnakeGame = () => {
           </>
         )}
 
-        {snakeBody.map((pos, index) => (
-          <div
-            key={index}
-            className={`snakeShadow first:z-[999 absolute h-[10px] w-[10px] bg-secondary-green text-[5px]`}
-            style={{
-              left: `${pos.x}px`,
-              top: `${pos.y}px`,
-            }}
-          ></div>
-        ))}
+        <div className=''>
+          {snakeBody.map((pos, index) => {
+            const opacity = 1 - 0.7 * (index / (snakeBody.length - 1));
+            return (
+              <div
+                key={index}
+                className={`absolute h-[10px] w-[10px] first:rounded-${roundSnakeHead()}`}
+                style={{
+                  left: `${pos.x}px`,
+                  top: `${pos.y}px`,
+                  background: `rgba(67, 217, 173, ${opacity})`,
+                }}
+              />
+            );
+          })}
+        </div>
         <div
-          className={`foodShadow absolute h-[10px] w-[10px] rounded-full bg-gradients-green transition-all duration-500`}
+          className={`foodShadow absolute h-[10px] w-[10px] rounded-full bg-gradients-green transition-all duration-300`}
           style={{ left: `${foodPosition.x}px`, top: `${foodPosition.y}px` }}
-        ></div>
+        />
       </div>
 
       <div className='flex h-[400px] flex-col justify-between text-text-white'>
@@ -302,19 +332,9 @@ const SnakeGame = () => {
               </div>
             </div>
           </div>
-
-          <div className='flex flex-col gap-[10px]'>
-            <span>// food left</span>
-            <div className='flex w-[120px] flex-wrap gap-[14px]'>
-              {Array.from({ length: foodLeft }, (value, index) => (
-                <div
-                  key={index}
-                  className={`foodShadow h-[10px] w-[10px] rounded-full bg-gradients-green transition-all duration-500`}
-                ></div>
-              ))}
-            </div>
-          </div>
+          <ScoreBoard foodLeft={foodLeft} />
         </div>
+
         <div className='flex justify-end'>
           <Link
             href='/about'
