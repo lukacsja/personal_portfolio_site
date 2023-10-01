@@ -26,7 +26,7 @@
   }
 }
 
-.bodyHeight {
+.body-height {
   height: calc(100vh - 1px);
 }
 
@@ -66,13 +66,13 @@
   right: 5%;
 }
 
-.game-board {
+.game-board-styles {
   background: linear-gradient(to bottom, #43d9ad21, #237b6d);
   box-shadow:
     0 120px 48px 0 rgba(0, 0, 0, 0.04),
-    0 68px 41px 0 rgba(0, 0, 0, 0.15),
+    0 68px 40px 0 rgba(0, 0, 0, 0.15),
     0 30px 30px 0 rgba(0, 0, 0, 0.26),
-    0 8px 17px 0 rgba(0, 0, 0, 0.29),
+    0 8px 18px 0 rgba(0, 0, 0, 0.29),
     inset 0 6px 8px 0 rgba(255, 255, 255, 0.1),
     inset 0 -4px 5px 0 rgba(0, 0, 0, 0.22);
 
@@ -80,18 +80,19 @@
   border: 2px solid rgb(12, 22, 22);
 }
 
-.foodShadow {
+.food-shadow {
   box-shadow: 0 0 10px #43d9ad;
 }
 
-.boardShadow {
+.gamefield-shadow {
   box-shadow:
     0 120px 48px 0 rgba(0, 0, 0, 0.04),
-    0 68px 41px 0 rgba(0, 0, 0, 0.15),
+    0 68px 40px 0 rgba(0, 0, 0, 0.15),
     0 30px 30px 0 rgba(0, 0, 0, 0.26),
-    0 8px 17px 0 rgba(0, 0, 0, 0.29),
+    0 8px 18px 0 rgba(0, 0, 0, 0.29),
     inset 0 6px 8px 0 rgba(255, 255, 255, 0.1),
     inset 0 -4px 5px 0 rgba(0, 0, 0, 0.22);
 
+  box-sizing: content-box;
   border: 1px solid rgb(12, 22, 22);
 }

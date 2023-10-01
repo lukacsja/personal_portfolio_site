@@ -19,31 +19,37 @@ const moveStep = 10;
 const boardWidth = 240;
 const boardHeight = 400;
 const foodToCollect = 10;
+const initialHeadPos = {
+  x: 210,
+  y: 180,
+};
+const initialSnakeBody = [
+  initialHeadPos,
+  { x: 210, y: 190 },
+  { x: 210, y: 200 },
+  { x: 210, y: 210 },
+  { x: 210, y: 220 },
+  { x: 210, y: 230 },
+  { x: 210, y: 240 },
+  { x: 210, y: 250 },
+  { x: 200, y: 250 },
+  { x: 190, y: 250 },
+  { x: 180, y: 250 },
+  { x: 180, y: 260 },
+  { x: 180, y: 270 },
+];
+const initialFoodPos = {
+  x: 150,
+  y: 100,
+};
 
 const SnakeGame = () => {
-  const [headPosition, setHeadPosition] = useState<Position>({
-    x: 210,
-    y: 210,
-  });
-  const [snakeBody, setSnakeBody] = useState<Position[]>([
-    headPosition,
-    { x: 210, y: 220 },
-    { x: 210, y: 230 },
-    { x: 210, y: 240 },
-    { x: 210, y: 250 },
-    { x: 210, y: 260 },
-    { x: 210, y: 270 },
-    { x: 210, y: 280 },
-    { x: 210, y: 290 },
-    { x: 210, y: 300 },
-  ]);
-  const [foodPosition, setFoodPosition] = useState<Position>({
-    x: 150,
-    y: 100,
-  });
+  const [headPosition, setHeadPosition] = useState<Position>(initialHeadPos);
+  const [snakeBody, setSnakeBody] = useState<Position[]>(initialSnakeBody);
+  const [foodPosition, setFoodPosition] = useState<Position>(initialFoodPos);
+
   const [currentDirection, setCurrentDirection] =
     useState<MoveDirections | null>(null);
-
   const [foodLeft, setFoodLeft] = useState(foodToCollect);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameCompleted, setIsGameCompleted] = useState(false);
@@ -80,31 +86,11 @@ const SnakeGame = () => {
   };
 
   const restartGame = useCallback(() => {
-    setHeadPosition({
-      x: 210,
-      y: 210,
-    });
-
-    const initialSnakeBody = [
-      { x: 210, y: 210 },
-      { x: 210, y: 220 },
-      { x: 210, y: 230 },
-      { x: 210, y: 240 },
-      { x: 210, y: 250 },
-      { x: 210, y: 260 },
-      { x: 210, y: 270 },
-      { x: 210, y: 280 },
-      { x: 210, y: 290 },
-      { x: 210, y: 300 },
-    ];
-
+    setHeadPosition(initialHeadPos);
     setSnakeBody(initialSnakeBody);
     setIsGameCompleted(false);
     setIsGameOver(false);
-    setFoodPosition({
-      x: 150,
-      y: 100,
-    });
+    setFoodPosition(initialFoodPos);
     setFoodLeft(foodToCollect);
     setCurrentDirection('up');
   }, []);
@@ -173,7 +159,7 @@ const SnakeGame = () => {
     if (!isGameOver && currentDirection) {
       const interval = setInterval(() => {
         moveSnake(currentDirection);
-      }, 50);
+      }, 70);
 
       return () => clearInterval(interval);
     } else if (isGameOver) {
@@ -199,16 +185,16 @@ const SnakeGame = () => {
     }
   }, [headPosition]);
 
-  const roundSnakeHead = useCallback(() => {
+  const roundSnakesHead = useCallback(() => {
     switch (currentDirection) {
       case 'down':
-        return 'b';
+        return 'first:rounded-b';
       case 'right':
-        return 'r';
+        return 'first:rounded-r';
       case 'left':
-        return 'l';
+        return 'first:rounded-l';
       default:
-        return 't';
+        return 'first:rounded-t';
     }
   }, [currentDirection]);
 
@@ -246,13 +232,13 @@ const SnakeGame = () => {
   }, [headPosition, isGameOver, isInitialBoardState]);
 
   return (
-    <div className='game-board relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg lg:flex'>
+    <div className='game-board-styles relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg lg:flex'>
       <BoardCorner position='top-left' />
       <BoardCorner position='top-right' />
       <BoardCorner position='bottom-left' />
       <BoardCorner position='bottom-right' />
       <div
-        className='boardShadow relative overflow-hidden rounded-lg bg-primary-light'
+        className='gamefield-shadow relative overflow-hidden rounded-lg bg-primary-light'
         style={{ width: `${boardWidth}px`, height: `${boardHeight}px` }}
       >
         {isInitialBoardState && <StartButton startGame={startFirstGame} />}
@@ -274,11 +260,11 @@ const SnakeGame = () => {
 
         <div className=''>
           {snakeBody.map((pos, index) => {
-            const opacity = 1 - 0.7 * (index / (snakeBody.length - 1));
+            const opacity = 1 - 0.9 * (index / (snakeBody.length - 1));
             return (
               <div
                 key={index}
-                className={`absolute h-[10px] w-[10px] first:rounded-${roundSnakeHead()}`}
+                className={`absolute h-[10px] w-[10px] ${roundSnakesHead()}`}
                 style={{
                   left: `${pos.x}px`,
                   top: `${pos.y}px`,
@@ -289,7 +275,7 @@ const SnakeGame = () => {
           })}
         </div>
         <div
-          className={`foodShadow absolute h-[10px] w-[10px] rounded-full bg-gradients-green transition-all duration-300`}
+          className={`food-shadow absolute h-[10px] w-[10px] rounded-full bg-gradients-green transition-all duration-300`}
           style={{ left: `${foodPosition.x}px`, top: `${foodPosition.y}px` }}
         />
       </div>
