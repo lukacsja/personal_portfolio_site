@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 interface LineNumbersProps {
   codeContainerRef: React.RefObject<HTMLDivElement>;
   lineHeight: number;
+  content: string | null;
 }
 
 const LineNumbers: React.FC<LineNumbersProps> = ({
   codeContainerRef,
   lineHeight,
+  content,
 }) => {
   const [lineNumbers, setLineNumbers] = useState<number[]>([]);
 
@@ -28,7 +30,7 @@ const LineNumbers: React.FC<LineNumbersProps> = ({
     return () => {
       window.removeEventListener('resize', updateLineNumbers);
     };
-  }, [codeContainerRef, lineHeight]);
+  }, [codeContainerRef, lineHeight, content]);
 
   return (
     <div className='flex select-none flex-col items-end'>
