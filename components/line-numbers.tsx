@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 interface LineNumbersProps {
   codeContainerRef: React.RefObject<HTMLDivElement>;
   lineHeight: number;
-  content: string | null;
+  content?: string | null;
 }
 
 const LineNumbers: React.FC<LineNumbersProps> = ({
