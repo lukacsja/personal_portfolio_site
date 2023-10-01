@@ -136,7 +136,11 @@ const About = () => {
               <span>{`/ ${currentContent}`}</span>
             </div>
             <div className='flex h-full w-full items-start justify-center gap-[20px] text-[18px] leading-[27px] text-secondary-gray'>
-              <LineNumbers codeContainerRef={paragraphRef} lineHeight={27} />
+              <LineNumbers
+                codeContainerRef={paragraphRef}
+                lineHeight={27}
+                content={getCurrentParagraph(currentContent)}
+              />
               <div className='' ref={paragraphRef}>
                 {getCurrentParagraph(currentContent)}
               </div>
