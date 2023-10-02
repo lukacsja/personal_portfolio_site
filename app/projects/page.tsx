@@ -127,16 +127,10 @@ const Projects = () => {
             </>
           )}
         </div>
-        <div className='mt-[16px] lg:mt-0 lg:flex lg:h-full lg:w-full lg:items-center lg:justify-center lg:gap-[12px] lg:p-[48px]'>
-          <ul className='flex w-full flex-col justify-center gap-[20px] text-secondary-gray md:grid md:grid-cols-2 md:gap-[30px] lg:grid lg:grid-cols-3 lg:gap-[40px]'>
-            {filteredProjects.map((project, index) => (
-              <li className='' key={project.title}>
-                <div className='mb-[16px]'>
-                  <span className='text-secondary-blue'>
-                    {`Project ${project.id}`}
-                  </span>
-                  <span>{` / ${project.title}`}</span>
-                </div>
+        <div className='mt-[16px] lg:mt-0 lg:flex lg:h-full lg:w-full lg:items-start lg:justify-center lg:gap-[12px] lg:p-[48px]'>
+          <ul className='flex w-full flex-col justify-center gap-[20px] text-secondary-gray md:grid md:grid-cols-2 md:gap-[30px] lg:grid lg:grid-cols-2 lg:gap-[40px] xl:grid-cols-3'>
+            {filteredProjects.map((project) => (
+              <li className='' key={project.id}>
                 <ProjectCard
                   title={project.title}
                   url={project.url}
