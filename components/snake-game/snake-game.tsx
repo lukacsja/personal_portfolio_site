@@ -9,6 +9,7 @@ import { MoveDirections } from '@/lib/types';
 import ArrowButton from './arrow-button';
 import StartButton from './start-button';
 import ScoreBoard from './score-board';
+import { motion } from 'framer-motion';
 
 type Position = {
   x: number;
@@ -232,105 +233,119 @@ const SnakeGame = () => {
   }, [headPosition, isGameOver, isInitialBoardState]);
 
   return (
-    <div className='game-board-styles relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg lg:flex'>
-      <BoardCorner position='top-left' />
-      <BoardCorner position='top-right' />
-      <BoardCorner position='bottom-left' />
-      <BoardCorner position='bottom-right' />
-      <div
-        className='gamefield-shadow relative overflow-hidden rounded-lg bg-primary-light'
-        style={{ width: `${boardWidth}px`, height: `${boardHeight}px` }}
-      >
-        {isInitialBoardState && <StartButton startGame={startFirstGame} />}
-        {isGameCompleted && isGameOver && (
-          <>
-            <GameEndMessage message='well done!' />
-            <RestartButton restartGame={restartGame} buttonLabel='play-again' />
-          </>
-        )}
-        {!isGameCompleted && isGameOver && (
-          <>
-            <GameEndMessage message='game over!' />
-            <RestartButton
-              restartGame={restartGame}
-              buttonLabel='start-again'
-            />
-          </>
-        )}
-
-        <div className=''>
-          {snakeBody.map((pos, index) => {
-            const opacity = 1 - 0.9 * (index / (snakeBody.length - 1));
-            return (
-              <div
-                key={index}
-                className={`absolute h-[10px] w-[10px] ${roundSnakesHead()}`}
-                style={{
-                  left: `${pos.x}px`,
-                  top: `${pos.y}px`,
-                  background: `rgba(67, 217, 173, ${opacity})`,
-                }}
-              />
-            );
-          })}
-        </div>
+    <motion.div
+      initial={{ y: -1000 }}
+      animate={{ y: 0 }}
+      transition={{
+        duration: 1,
+        type: 'spring',
+        damping: 10,
+        stiffness: 100,
+      }}
+    >
+      <div className='game-board-styles relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg lg:flex'>
+        <BoardCorner position='top-left' />
+        <BoardCorner position='top-right' />
+        <BoardCorner position='bottom-left' />
+        <BoardCorner position='bottom-right' />
         <div
-          className={`food-shadow absolute h-[10px] w-[10px] rounded-full bg-gradients-green transition-all duration-300`}
-          style={{ left: `${foodPosition.x}px`, top: `${foodPosition.y}px` }}
-        />
-      </div>
-
-      <div className='flex h-[400px] flex-col justify-between text-text-white'>
-        <div className='flex flex-col gap-[20px]'>
-          <div className='flex flex-col rounded-lg bg-[#011423] bg-opacity-20 p-[16px]'>
-            <span>// use keyboard</span>
-            <span>// arrows to play</span>
-            <div className='mt-[15px] flex flex-col items-center gap-[5px]'>
-              <ArrowButton
-                isGameOver={isGameOver}
-                direction='up'
-                moveSnake={moveSnake}
-                image='/icons/gameIcons/arrow-up.svg'
-                isFirstGame={isInitialBoardState}
+          className='gamefield-shadow relative overflow-hidden rounded-lg bg-primary-light'
+          style={{ width: `${boardWidth}px`, height: `${boardHeight}px` }}
+        >
+          {isInitialBoardState && <StartButton startGame={startFirstGame} />}
+          {isGameCompleted && isGameOver && (
+            <>
+              <GameEndMessage message='well done!' />
+              <RestartButton
+                restartGame={restartGame}
+                buttonLabel='play-again'
               />
-              <div className='flex gap-[5px]'>
+            </>
+          )}
+          {!isGameCompleted && isGameOver && (
+            <>
+              <GameEndMessage message='game over!' />
+              <RestartButton
+                restartGame={restartGame}
+                buttonLabel='start-again'
+              />
+            </>
+          )}
+
+          <div className=''>
+            {snakeBody.map((pos, index) => {
+              const opacity = 1 - 0.9 * (index / (snakeBody.length - 1));
+              return (
+                <div
+                  key={index}
+                  className={`absolute h-[10px] w-[10px] ${roundSnakesHead()}`}
+                  style={{
+                    left: `${pos.x}px`,
+                    top: `${pos.y}px`,
+                    background: `rgba(67, 217, 173, ${opacity})`,
+                  }}
+                />
+              );
+            })}
+          </div>
+          <div
+            className={`food-shadow absolute h-[10px] w-[10px] rounded-full bg-gradients-green transition-all duration-300`}
+            style={{ left: `${foodPosition.x}px`, top: `${foodPosition.y}px` }}
+          />
+        </div>
+
+        <div className='flex h-[400px] flex-col justify-between text-text-white'>
+          <div className='flex flex-col gap-[20px]'>
+            <div className='flex flex-col rounded-lg bg-[#011423] bg-opacity-20 p-[16px]'>
+              <span>// use keyboard</span>
+              <span>// arrows to play</span>
+              <div className='mt-[15px] flex flex-col items-center gap-[5px]'>
                 <ArrowButton
                   isGameOver={isGameOver}
-                  direction='left'
+                  direction='up'
                   moveSnake={moveSnake}
-                  image='/icons/gameIcons/arrow-left.svg'
+                  image='/icons/gameIcons/arrow-up.svg'
                   isFirstGame={isInitialBoardState}
                 />
-                <ArrowButton
-                  isGameOver={isGameOver}
-                  direction='down'
-                  moveSnake={moveSnake}
-                  image='/icons/gameIcons/arrow-down.svg'
-                  isFirstGame={isInitialBoardState}
-                />
-                <ArrowButton
-                  isGameOver={isGameOver}
-                  direction='right'
-                  moveSnake={moveSnake}
-                  image='/icons/gameIcons/arrow-right.svg'
-                  isFirstGame={isInitialBoardState}
-                />
+                <div className='flex gap-[5px]'>
+                  <ArrowButton
+                    isGameOver={isGameOver}
+                    direction='left'
+                    moveSnake={moveSnake}
+                    image='/icons/gameIcons/arrow-left.svg'
+                    isFirstGame={isInitialBoardState}
+                  />
+                  <ArrowButton
+                    isGameOver={isGameOver}
+                    direction='down'
+                    moveSnake={moveSnake}
+                    image='/icons/gameIcons/arrow-down.svg'
+                    isFirstGame={isInitialBoardState}
+                  />
+                  <ArrowButton
+                    isGameOver={isGameOver}
+                    direction='right'
+                    moveSnake={moveSnake}
+                    image='/icons/gameIcons/arrow-right.svg'
+                    isFirstGame={isInitialBoardState}
+                  />
+                </div>
               </div>
             </div>
+            <ScoreBoard foodLeft={foodLeft} />
           </div>
-          <ScoreBoard foodLeft={foodLeft} />
-        </div>
 
-        <div className='flex justify-end'>
-          <Link
-            href='/about'
-            className='rounded-lg border border-white px-[14px] py-[10px] transition-all duration-300 hover:border-opacity-50'
-          >
-            skip
-          </Link>
+          <div className='flex justify-end'>
+            <Link
+              href='/about'
+              className='rounded-lg border border-white px-[14px] py-[10px] transition-all duration-300 hover:border-opacity-50'
+            >
+              skip
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
