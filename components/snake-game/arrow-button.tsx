@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
-import { MoveDirections } from '@/lib/types';
+import { MoveDirection } from '@/lib/types';
 
 interface ArrowButtonProps {
   isGameOver: boolean;
-  direction: MoveDirections;
-  moveSnake: (direction: MoveDirections) => void;
+  direction: MoveDirection;
+  moveSnake: (direction: MoveDirection) => void;
   image: string;
   isFirstGame: boolean;
 }

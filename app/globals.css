@@ -96,3 +96,19 @@
   box-sizing: content-box;
   border: 1px solid rgb(12, 22, 22);
 }
+
+@keyframes blinkingCursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.blinking-cursor {
+  animation: blinkingCursor 1000ms infinite;
+}

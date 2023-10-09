@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import BoardCorner from './boardcorner';
 import RestartButton from './restart-button';
 import GameEndMessage from './game-end-message';
-import { MoveDirections } from '@/lib/types';
+import { MoveDirection } from '@/lib/types';
 import ArrowButton from './arrow-button';
 import StartButton from './start-button';
 import ScoreBoard from './score-board';
@@ -50,7 +50,7 @@ const SnakeGame = () => {
   const [foodPosition, setFoodPosition] = useState<Position>(initialFoodPos);
 
   const [currentDirection, setCurrentDirection] =
-    useState<MoveDirections | null>(null);
+    useState<MoveDirection | null>(null);
   const [foodLeft, setFoodLeft] = useState(foodToCollect);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameCompleted, setIsGameCompleted] = useState(false);
@@ -110,7 +110,7 @@ const SnakeGame = () => {
     }
   };
 
-  const moveSnake = (direction: MoveDirections) => {
+  const moveSnake = (direction: MoveDirection) => {
     if (
       (currentDirection === 'up' && direction === 'down') ||
       (currentDirection === 'down' && direction === 'up') ||
@@ -241,6 +241,7 @@ const SnakeGame = () => {
         type: 'spring',
         damping: 10,
         stiffness: 100,
+        delay: 6.5,
       }}
     >
       <div className='game-board-styles relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg lg:flex'>
@@ -295,46 +296,43 @@ const SnakeGame = () => {
         </div>
 
         <div className='flex h-[400px] flex-col justify-between text-text-white'>
-          <div className='flex flex-col gap-[20px]'>
-            <div className='flex flex-col rounded-lg bg-[#011423] bg-opacity-20 p-[16px]'>
-              <span>// use keyboard</span>
-              <span>// arrows to play</span>
-              <div className='mt-[15px] flex flex-col items-center gap-[5px]'>
+          <div className='flex flex-col rounded-lg bg-[#011423] bg-opacity-20 p-[16px]'>
+            <span>// use keyboard</span>
+            <span>// arrows to play</span>
+            <div className='mt-[15px] flex flex-col items-center gap-[5px]'>
+              <ArrowButton
+                isGameOver={isGameOver}
+                direction='up'
+                moveSnake={moveSnake}
+                image='/icons/gameIcons/arrow-up.svg'
+                isFirstGame={isInitialBoardState}
+              />
+              <div className='flex gap-[5px]'>
                 <ArrowButton
                   isGameOver={isGameOver}
-                  direction='up'
+                  direction='left'
                   moveSnake={moveSnake}
-                  image='/icons/gameIcons/arrow-up.svg'
+                  image='/icons/gameIcons/arrow-left.svg'
                   isFirstGame={isInitialBoardState}
                 />
-                <div className='flex gap-[5px]'>
-                  <ArrowButton
-                    isGameOver={isGameOver}
-                    direction='left'
-                    moveSnake={moveSnake}
-                    image='/icons/gameIcons/arrow-left.svg'
-                    isFirstGame={isInitialBoardState}
-                  />
-                  <ArrowButton
-                    isGameOver={isGameOver}
-                    direction='down'
-                    moveSnake={moveSnake}
-                    image='/icons/gameIcons/arrow-down.svg'
-                    isFirstGame={isInitialBoardState}
-                  />
-                  <ArrowButton
-                    isGameOver={isGameOver}
-                    direction='right'
-                    moveSnake={moveSnake}
-                    image='/icons/gameIcons/arrow-right.svg'
-                    isFirstGame={isInitialBoardState}
-                  />
-                </div>
+                <ArrowButton
+                  isGameOver={isGameOver}
+                  direction='down'
+                  moveSnake={moveSnake}
+                  image='/icons/gameIcons/arrow-down.svg'
+                  isFirstGame={isInitialBoardState}
+                />
+                <ArrowButton
+                  isGameOver={isGameOver}
+                  direction='right'
+                  moveSnake={moveSnake}
+                  image='/icons/gameIcons/arrow-right.svg'
+                  isFirstGame={isInitialBoardState}
+                />
               </div>
             </div>
-            <ScoreBoard foodLeft={foodLeft} />
           </div>
-
+          <ScoreBoard foodLeft={foodLeft} />
           <div className='flex justify-end'>
             <Link
               href='/about'

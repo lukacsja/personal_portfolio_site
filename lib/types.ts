@@ -45,7 +45,7 @@ export enum FieldErrors {
   noError = '',
 }
 
-export type MoveDirections = 'up' | 'down' | 'left' | 'right';
+export type MoveDirection = 'up' | 'down' | 'left' | 'right';
 
 export enum TechItem {
   html = 'HTML',
