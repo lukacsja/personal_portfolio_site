@@ -241,7 +241,7 @@ const SnakeGame = () => {
         type: 'spring',
         damping: 10,
         stiffness: 100,
-        delay: 6.5,
+        delay: 4.75,
       }}
     >
       <div className='game-board-styles relative hidden h-[475px] w-[510px] items-center justify-center gap-[25px] rounded-lg lg:flex'>
