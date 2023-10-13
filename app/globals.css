@@ -112,3 +112,11 @@
 .blinking-cursor {
   animation: blinkingCursor 1000ms infinite;
 }
+
+.projects-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+  column-gap: 20px;
+  row-gap: 40px;
+}

@@ -13,23 +13,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
 }) => {
   return (
-    <div className='flex w-full min-w-[285px] max-w-[475px] flex-col gap-[16px]'>
-      <div>
+    <div className='flex w-full min-w-[285px] max-w-[455px] flex-col gap-[24px]'>
+      <div className='whitespace-nowrap'>
         <span className='text-secondary-blue'>{`Project ${id}`}</span>
-        <span>{` / ${title}`}</span>
+        <span className=''>{` / ${title}`}</span>
       </div>
-      <div className='flex flex-col overflow-hidden rounded-lg border border-lines transition-all duration-300 hover:scale-105'>
+      <div className='flex flex-col rounded-lg border border-lines transition-all duration-300 hover:scale-105'>
         <Image
           src={image}
           alt='project image'
-          width={1024}
-          height={1024}
-          className='h-auto object-fill'
+          width={512}
+          height={200}
+          className='object-contain'
           priority
           placeholder='blur'
+          layout='responsive'
         />
-        <div className='flex h-1/2 w-full flex-col gap-[24px] p-[30px]'>
-          <p className='h-[54px] w-full leading-[130%] text-secondary-gray'>
+
+        <div className='flex w-full flex-col gap-[24px] p-[30px]'>
+          <p className='h-[80px] w-full overflow-hidden text-ellipsis leading-[130%] text-secondary-gray'>
             {desc}
           </p>
           <Link

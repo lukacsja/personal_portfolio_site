@@ -48,9 +48,6 @@ export enum FieldErrors {
 export type MoveDirection = 'up' | 'down' | 'left' | 'right';
 
 export enum TechItem {
-  html = 'HTML',
-  css = 'CSS',
-  js = 'Javascript',
   react = 'React',
   next = 'Next.js',
   tw = 'Tailwind',

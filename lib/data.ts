@@ -6,9 +6,6 @@ import folderRose from '@/public/icons/folder-rose.svg';
 import folderBlue from '@/public/icons/folder-blue.svg';
 import folderGreen from '@/public/icons/folder-green.svg';
 import reactLogo from '@/public/icons/technologies/react.svg';
-import htmlLogo from '@/public/icons/technologies/html.svg';
-import cssLogo from '@/public/icons/technologies/css.svg';
-import jsLogo from '@/public/icons/technologies/js.svg';
 import sassLogo from '@/public/icons/technologies/sass.svg';
 import twLogo from '@/public/icons/technologies/tw.svg';
 import tsLogo from '@/public/icons/technologies/ts.svg';
@@ -16,6 +13,7 @@ import nextLogo from '@/public/icons/technologies/next.svg';
 import phoneWebshopImage from '@/public/images/phone-webshop.png';
 import portFolioSiteImage from '@/public/images/portfolio-site.png';
 import calculatorAppImage from '@/public/images/calculator-app.png';
+import dictionaryWebAppImage from '@/public/images/dictionary-web-app.png';
 import { ContactsData, TechItem } from './types';
 
 export const navLinks = [
@@ -114,18 +112,6 @@ export const aboutData = [
 
 export const technologies = [
   {
-    title: TechItem.html,
-    icon: htmlLogo,
-  },
-  {
-    title: TechItem.css,
-    icon: cssLogo,
-  },
-  {
-    title: TechItem.js,
-    icon: jsLogo,
-  },
-  {
     title: TechItem.sass,
     icon: sassLogo,
   },
@@ -154,28 +140,15 @@ export const projectsList = [
     url: 'https://github.com/lukacsja/personal_portfolio_site',
     image: portFolioSiteImage,
     desc: 'The site you are currently visiting - built with Next.js 13.',
-    tags: [
-      TechItem.html,
-      TechItem.css,
-      TechItem.js,
-      TechItem.react,
-      TechItem.sass,
-    ],
+    tags: [TechItem.react, TechItem.sass, TechItem.ts],
   },
   {
     id: 2,
-    title: '_calculator-app',
-    url: 'https://github.com/lukacsja/calculator_app',
-    image: calculatorAppImage,
-    desc: 'A simple calculator app built with Next.js.',
-    tags: [
-      TechItem.html,
-      TechItem.css,
-      TechItem.js,
-      TechItem.tw,
-      TechItem.react,
-      TechItem.next,
-    ],
+    title: '_dictionary-web-app',
+    url: 'https://github.com/lukacsja/dictionary-web-app',
+    image: dictionaryWebAppImage,
+    desc: 'A mobile-first dictionary web app - built with Next.js, Typescript and TailwindCSS.',
+    tags: [TechItem.react, TechItem.sass, TechItem.ts],
   },
   {
     id: 3,
@@ -183,13 +156,14 @@ export const projectsList = [
     url: 'https://github.com/lukacsja/product_catalog',
     image: phoneWebshopImage,
     desc: 'A phone webshop built with React & TypeScript.',
-    tags: [
-      TechItem.html,
-      TechItem.css,
-      TechItem.js,
-      TechItem.react,
-      TechItem.next,
-      TechItem.tw,
-    ],
+    tags: [TechItem.react, TechItem.next, TechItem.tw, TechItem.ts],
+  },
+  {
+    id: 4,
+    title: '_calculator-app',
+    url: 'https://github.com/lukacsja/calculator_app',
+    image: calculatorAppImage,
+    desc: 'A simple calculator app built with Next.js.',
+    tags: [TechItem.tw, TechItem.react, TechItem.next, TechItem.ts],
   },
 ];
