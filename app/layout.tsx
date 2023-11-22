@@ -1,7 +1,4 @@
 import './globals.css';
-
-import 'tailwindcss/tailwind.css';
-
 import type { Metadata } from 'next';
 import { Fira_Code } from 'next/font/google';
 import Header from '@/components/header';

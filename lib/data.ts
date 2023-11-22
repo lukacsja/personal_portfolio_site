@@ -12,7 +12,7 @@ import tsLogo from '@/public/icons/technologies/ts.svg';
 import nextLogo from '@/public/icons/technologies/next.svg';
 import phoneWebshopImage from '@/public/images/phone-webshop.png';
 import portFolioSiteImage from '@/public/images/portfolio-site.png';
-import calculatorAppImage from '@/public/images/calculator-app.png';
+import passwordGeneratorAppImage from '@/public/images/password-generator-app.png';
 import dictionaryWebAppImage from '@/public/images/dictionary-web-app.png';
 import { ContactsData, TechItem } from './types';
 
@@ -160,10 +160,10 @@ export const projectsList = [
   },
   {
     id: 4,
-    title: '_calculator-app',
-    url: 'https://github.com/lukacsja/calculator_app',
-    image: calculatorAppImage,
-    desc: 'A simple calculator app built with Next.js.',
+    title: '_password-generator-app',
+    url: 'https://github.com/lukacsja/password-generator-app',
+    image: passwordGeneratorAppImage,
+    desc: 'A password generator app built with Next.js.',
     tags: [TechItem.tw, TechItem.react, TechItem.next, TechItem.ts],
   },
 ];
