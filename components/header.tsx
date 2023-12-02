@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { navLinks } from '@/lib/data';
 import Link from 'next/link';
 import { useMobileMenu } from '@/context/mobileMenuContext';
 import MobileMenu from './mobile-menu';
-import Image from 'next/image';
+import { navLinks } from '@/lib/data';
 import { usePathname } from 'next/navigation';
+import { Twirl as Hamburger } from 'hamburger-react';
 
 const Header = () => {
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
@@ -22,12 +22,10 @@ const Header = () => {
 
   return (
     <>
-      <header className='fixed left-0 top-0 z-[999] flex h-[56px] min-h-[56px] w-full flex-none items-center justify-between border-b border-lines bg-inherit px-[18px] text-secondary-gray lg:justify-normal lg:px-[0]'>
-        <div className='lg:w-[310px]'>
-          <Link href='/' className='p-[18px] pr-0 lg:pl-[22px]'>
-            janos-lukacs
-          </Link>
-        </div>
+      <header className='fixed top-0 z-[999] flex h-14 w-full items-center justify-between border-b border-lines px-[18px] text-secondary-gray lg:justify-normal'>
+        <Link href='/' className='flex items-center lg:w-[292px]'>
+          janos-lukacs
+        </Link>
         <nav className='hidden lg:flex'>
           {navLinks.map((link) => (
             <div
@@ -36,30 +34,31 @@ const Header = () => {
             >
               <Link
                 href={link.href}
-                className='px-8 py-4 transition-all duration-500 hover:bg-lines'
+                className='flex h-14 items-center px-8 transition-all duration-500 hover:bg-lines'
               >
                 {link.name}
               </Link>
+              {/* animated underline on hover => */}
               <span
                 className={`${
                   pathName === link.href ? 'max-w-full' : ''
                 } z-10 mt-[-3px] block h-[3px] max-w-0 bg-accent-yellow transition-all duration-500 group-hover:max-w-full`}
-              ></span>
+              />
             </div>
           ))}
         </nav>
-        <div className='flex lg:hidden'>
-          <button onClick={toggleMobileMenu}>
-            <Image
-              src={isMobileMenuOpen ? '/icons/x.svg' : '/icons/hamburger.svg'}
-              alt='linkedin logo'
-              width={24}
-              height={24}
-              quality={95}
-              priority
-              className='h-auto w-auto transform transition-transform duration-300 ease-in-out active:rotate-90'
-            />
-          </button>
+        <div className='lg:hidden'>
+          <Hamburger
+            label='Show menu'
+            size={24}
+            direction='left'
+            duration={0.4}
+            distance='lg'
+            color='#607b96'
+            easing='ease-in-out'
+            toggled={isMobileMenuOpen}
+            toggle={toggleMobileMenu}
+          />
         </div>
       </header>
       <MobileMenu />
