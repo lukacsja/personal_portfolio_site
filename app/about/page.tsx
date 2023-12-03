@@ -109,14 +109,14 @@ const About = () => {
             </div>
           </div>
           <div className='hidden lg:flex lg:h-full lg:w-full lg:items-start lg:justify-center lg:gap-5 lg:px-6 lg:py-10 lg:text-[18px] lg:leading-[27px] lg:text-secondary-gray'>
-            <div className='flex flex-wrap gap-10'>
+            <div className='flex flex-wrap gap-20'>
               {technologies.map((tech) => (
-                <MagneticContainer>
+                <MagneticContainer key={tech.title}>
                   <Image
                     src={tech.icon}
                     alt={tech.title}
-                    width={40}
-                    height={40}
+                    width={100}
+                    height={100}
                     priority
                   />
                 </MagneticContainer>
