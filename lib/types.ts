@@ -29,34 +29,31 @@ export type FormData = {
   formMessage: string;
 };
 
-export enum FormFields {
-  SenderName = 'senderName',
-  SenderEmail = 'senderEmail',
-  FormMessage = 'formMessage',
-}
-
-export enum FieldErrors {
-  nameEmpty = 'Your name is required.',
-  emailEmpty = 'Your email is required.',
-  messageEmpty = "Don't forget to type your message!",
-  nameInvalid = 'Invalid sender name.',
-  emailInvalid = 'Invalid sender email.',
-  messageInvalid = 'Invalid message',
-  noError = '',
+export enum FieldErrorMessages {
+  EmptyName = 'Please enter your name',
+  EmptyEmail = 'Please enter your email',
+  EmptyMessage = 'Please enter your message',
+  InvalidName = 'Invalid sender name.',
+  InvalidEmail = 'Invalid sender email.',
+  InvalidMessage = 'Invalid message',
+  NoError = '',
 }
 
 export type MoveDirection = 'up' | 'down' | 'left' | 'right';
 
-export enum TechItem {
+export enum TechItems {
   react = 'React',
   next = 'Next.js',
   tw = 'Tailwind',
   sass = 'SASS',
   ts = 'Typescript',
+  js = 'Javascript',
+  html = 'HTML5',
+  css = 'CSS3',
 }
 
 export type Technology = {
-  title: TechItem;
+  title: TechItems;
   icon: string;
 };
 
@@ -66,5 +63,5 @@ export type Project = {
   url: string;
   image: StaticImageData;
   desc: string;
-  tags: TechItem[];
+  tags: TechItems[];
 };

@@ -1,78 +1,53 @@
-import ContactForm from '@/components/contact-form';
+import React from 'react';
+import { contactsData } from '@/lib/data';
+import ContactForm from '@/components/contact/contact-form';
 import CurrentTab from '@/components/current-tab-desktop';
 import DropdownItem from '@/components/dropdown-item';
+import DropdownMenu from '@/components/dropdown-menu';
 import PageTitle from '@/components/page-title';
-import { contactsData } from '@/lib/data';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
 
 const Contact = () => {
   return (
-    <main className='mt-[56px] flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
-      <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col'>
+    <div className='flex-1 px-7 py-4 text-text-white lg:flex lg:p-0'>
+      <div className='lg:flex lg:min-w-[292px] lg:max-w-[292px] lg:flex-col'>
         <PageTitle title='_contact-me' />
-        <div className='flex flex-col gap-[3px] lg:gap-0'>
-          <DropdownItem
+        <div className='flex flex-col gap-1 lg:gap-0'>
+          <DropdownMenu
             title={'contacts'}
             content={
-              <div className='flex flex-col gap-[10px] py-[16px] text-secondary-gray lg:px-[22px]'>
-                <div className='flex gap-[10px] transition-all duration-300 hover:text-text-white'>
-                  <Image
-                    src={contactsData.email.icon}
-                    alt={contactsData.email.title}
-                    width={14}
-                    height={14}
-                    priority
-                  />
-                  <Link href={`mailto:${contactsData.email.address}`}>
-                    {contactsData.email.address}
-                  </Link>
-                </div>
-                <address className='flex gap-[10px] transition-all duration-300 hover:text-text-white'>
-                  <Image
-                    src={contactsData.phone.icon}
-                    alt={contactsData.phone.title}
-                    width={14}
-                    height={14}
-                    priority
-                  />
-                  <Link href={`tel:${contactsData.phone.number}`}>
-                    {contactsData.phone.number}
-                  </Link>
-                </address>
-              </div>
+              <>
+                <DropdownItem
+                  title={contactsData.email.address}
+                  icon={contactsData.email.icon}
+                  isLink
+                  url={`mailto:${contactsData.email.address}`}
+                />
+                <DropdownItem
+                  title={contactsData.phone.number}
+                  icon={contactsData.phone.icon}
+                  isLink
+                  url={`tel:${contactsData.phone.number}`}
+                />
+              </>
             }
           />
-          <DropdownItem
+          <DropdownMenu
             title={'find-me-also-in'}
             content={
-              <div className='flex flex-col gap-[10px] py-[16px] text-secondary-gray lg:px-[22px]'>
-                <address className='flex gap-[10px] transition-all duration-300 hover:text-text-white'>
-                  <Image
-                    src={contactsData.github.icon}
-                    alt={contactsData.github.title}
-                    width={14}
-                    height={14}
-                    priority
-                  />
-                  <Link href={contactsData.github.url} target='_blank'>
-                    {contactsData.github.title}
-                  </Link>
-                </address>
-                <address className='flex gap-[10px] transition-all duration-300 hover:text-text-white'>
-                  <Image
-                    src={contactsData.linkedin.icon}
-                    alt={contactsData.linkedin.title}
-                    width={14}
-                    height={14}
-                    priority
-                  />
-                  <Link href={contactsData.linkedin.url} target='_blank'>
-                    {contactsData.linkedin.title}
-                  </Link>
-                </address>
-              </div>
+              <>
+                <DropdownItem
+                  title={contactsData.linkedin.title}
+                  icon={contactsData.linkedin.icon}
+                  isLink
+                  url={contactsData.linkedin.url}
+                />
+                <DropdownItem
+                  title={contactsData.github.title}
+                  icon={contactsData.github.icon}
+                  isLink
+                  url={contactsData.github.url}
+                />
+              </>
             }
           />
         </div>
@@ -84,7 +59,7 @@ const Contact = () => {
         </div>
         <ContactForm />
       </div>
-    </main>
+    </div>
   );
 };
 

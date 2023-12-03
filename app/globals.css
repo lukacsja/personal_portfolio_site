@@ -26,10 +26,6 @@
   }
 }
 
-.body-height {
-  height: calc(100vh - 1px);
-}
-
 .no-scroll {
   overflow: hidden;
 }

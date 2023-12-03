@@ -9,14 +9,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   url,
   image,
   desc,
-  id,
   title,
+  id,
 }) => {
   return (
-    <div className='flex w-full min-w-[285px] max-w-[455px] flex-col gap-[24px]'>
+    <div className='flex w-full min-w-[280px] max-w-[455px] flex-col gap-4'>
       <div className='whitespace-nowrap'>
-        <span className='text-secondary-blue'>{`Project ${id}`}</span>
-        <span className=''>{` / ${title}`}</span>
+        <p className=''>
+          <span className='font-bold text-secondary-blue'>{`${id}`}</span>
+          {` / ${title}`}
+        </p>
       </div>
       <div className='flex flex-col rounded-lg border border-lines transition-all duration-300 hover:scale-105'>
         <Image
@@ -27,17 +29,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           className='object-contain'
           priority
           placeholder='blur'
-          layout='responsive'
         />
 
-        <div className='flex w-full flex-col gap-[24px] p-[30px]'>
-          <p className='h-[80px] w-full overflow-hidden text-ellipsis leading-[130%] text-secondary-gray'>
+        <div className='flex w-full flex-col gap-6 p-7'>
+          <p className='h-20 w-full overflow-hidden text-ellipsis leading-[130%] text-secondary-gray'>
             {desc}
           </p>
           <Link
             href={url}
             target='_blank'
-            className='h-auto w-[130px] rounded-lg bg-[#1C2B3A] px-[14px] py-[10px] text-[14px] text-text-white transition-all hover:bg-[#263B50] '
+            rel='noopener noreferrer'
+            className='flex w-2/3 items-center justify-center rounded-lg bg-[#1C2B3A] px-4 py-3 text-[14px] text-text-white transition-all hover:bg-[#263B50]'
           >
             view-project
           </Link>

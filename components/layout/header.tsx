@@ -22,8 +22,11 @@ const Header = () => {
 
   return (
     <>
-      <header className='fixed top-0 z-[999] flex h-14 w-full items-center justify-between border-b border-lines px-[18px] text-secondary-gray lg:justify-normal'>
-        <Link href='/' className='flex items-center lg:w-[292px]'>
+      <header className='sticky top-0 z-[999] flex h-14 w-full items-center justify-between border-b border-lines bg-primary-light text-secondary-gray lg:justify-normal'>
+        <Link
+          href='/'
+          className='flex items-center px-6 transition-all duration-300 hover:text-accent-yellow lg:w-[292px]'
+        >
           janos-lukacs
         </Link>
         <nav className='hidden lg:flex'>
@@ -61,7 +64,7 @@ const Header = () => {
           />
         </div>
       </header>
-      <MobileMenu />
+      {isMobileMenuOpen && <MobileMenu />}
     </>
   );
 };

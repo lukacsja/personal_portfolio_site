@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { navLinks } from '@/lib/data';
 import Link from 'next/link';
 import { useMobileMenu } from '@/context/mobileMenuContext';
-import Footer from './footer';
 
 const MobileMenu = () => {
   const { isMobileMenuOpen, closeMobileMenu } = useMobileMenu();
+
+  useEffect(() => {
+    window.addEventListener('resize', closeMobileMenu);
+    return () => window.removeEventListener('resize', closeMobileMenu);
+  }, [window.innerWidth]);
+
   return (
     <div
-      className={`fixed bottom-0 top-[56px] z-[999] flex w-full flex-col justify-between overflow-hidden bg-primary-light transition-all duration-300 lg:hidden ${
-        isMobileMenuOpen ? 'right-0' : 'right-[-100%]'
-      }`}
+      className={`fixed bottom-12 top-14 z-[1000] flex w-full flex-col justify-between overflow-hidden bg-primary-medium transition-all duration-300 lg:hidden`}
     >
       <div className='flex flex-col text-text-white'>
         {navLinks.map((link) => (
@@ -24,7 +27,6 @@ const MobileMenu = () => {
           </Link>
         ))}
       </div>
-      <Footer />
     </div>
   );
 };

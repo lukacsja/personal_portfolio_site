@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import LineNumbers from './line-numbers';
+import React, { useRef } from 'react';
+import LineNumbers from '../line-numbers';
 
 interface CodeSnippetProps {
   name: string;
@@ -12,15 +12,19 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ name, email, message }) => {
 
   const today = new Date().toString().slice(0, 10);
 
-  const blue = 'text-secondary-blue';
-  const pink = 'text-accent-pink';
-  const yellow = 'text-accent-yellow';
+  const colors = {
+    blue: 'text-secondary-blue',
+    pink: 'text-accent-pink',
+    yellow: 'text-accent-yellow',
+  };
+
+  const { blue, pink, yellow } = colors;
 
   return (
-    <div className='hidden lg:flex lg:h-full lg:w-full lg:items-center lg:justify-center lg:px-[24px] lg:text-[18px] lg:leading-[27px] lg:text-secondary-gray'>
+    <div className='hidden lg:flex lg:h-full lg:w-full lg:items-center lg:justify-center lg:px-6 lg:text-[18px] lg:leading-[27px] lg:text-secondary-gray'>
       <div className='lg:flex lg:items-start lg:gap-[20px]'>
         <LineNumbers codeContainerRef={snippetRef} lineHeight={27} />
-        <div ref={snippetRef} className='break-keep'>
+        <p ref={snippetRef} className='break-keep'>
           <span className={pink}>const</span>{' '}
           <span className={blue}>button</span> <span className={pink}>=</span>{' '}
           <span className={blue}>document.querySelector</span>
@@ -61,7 +65,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ name, email, message }) => {
           <br />
           {'})'}
           <br />
-        </div>
+        </p>
       </div>
     </div>
   );

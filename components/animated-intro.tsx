@@ -28,13 +28,13 @@ const Intro = () => {
         <TypeAnimation
           sequence={[300, 'Hi all. I am']}
           cursor={false}
-          className='mb-[10px] block text-[18px] text-text-white'
+          className='mb-3 block text-[18px] text-text-white'
         />
 
         <TypeAnimation
           cursor={false}
           sequence={[1250, 'Janos Lukacs']}
-          className='mb-[5px] block break-words text-[62px] text-text-white'
+          className='mb-1 block text-[62px] text-text-white'
         />
 
         <TypeAnimation
@@ -73,6 +73,7 @@ const Intro = () => {
             className='text-accent-rose underline'
             href={contactsData.github.url}
             target='_blank'
+            rel='noopener noreferrer'
           >
             {contactsData.github.url}
           </Link>

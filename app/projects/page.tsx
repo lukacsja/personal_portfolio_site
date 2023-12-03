@@ -3,14 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import PageTitle from '@/components/page-title';
-import DropdownItem from '@/components/dropdown-item';
+import DropdownMenu from '@/components/dropdown-menu';
 import CurrentTab from '@/components/current-tab-desktop';
 import ProjectCard from '@/components/project-card';
 import { projectsList, technologies } from '@/lib/data';
-import { Project, TechItem } from '@/lib/types';
+import { Project, TechItems } from '@/lib/types';
 
 const Projects = () => {
-  const [currentFilters, setCurrentFilters] = useState<TechItem[]>(
+  const [currentFilters, setCurrentFilters] = useState<TechItems[]>(
     technologies.map((tech) => tech.title)
   );
   const [filteredProjects, setFilteredProjects] =
@@ -23,7 +23,7 @@ const Projects = () => {
     setFilteredProjects(filtered);
   };
 
-  const handleCheckboxChange = (tech: TechItem) => {
+  const handleCheckboxChange = (tech: TechItems) => {
     if (currentFilters.includes(tech)) {
       const newFilters = currentFilters.filter((item) => item !== tech);
       setCurrentFilters(newFilters);
@@ -38,19 +38,19 @@ const Projects = () => {
   }, [currentFilters]);
 
   return (
-    <main className='mt-[56px] flex-1 px-[27px] pb-[24px] pt-[21px] text-text-white lg:flex lg:px-0 lg:py-0'>
-      <div className='lg:flex lg:min-w-[310px] lg:max-w-[310px] lg:flex-col'>
+    <div className='flex-1 px-7 py-4 text-text-white lg:flex lg:p-0'>
+      <div className='lg:flex lg:min-w-[292px] lg:max-w-[292px] lg:flex-col'>
         <PageTitle title='_projects' />
 
-        <div className='flex flex-col gap-[3px] lg:gap-0'>
-          <DropdownItem
-            title={'projects'}
+        <div className='flex flex-col gap-1 lg:gap-0'>
+          <DropdownMenu
+            title={'tech-stack'}
             content={
-              <div className='flex flex-col gap-[16px] py-[16px] text-secondary-gray lg:px-[22px]'>
+              <div className='flex flex-col gap-4 py-4 text-secondary-gray lg:px-5'>
                 {technologies.map((tech) => (
                   <div
                     key={tech.title}
-                    className='flex cursor-pointer items-center gap-[24px] hover:bg-primary-medium hover:text-text-white
+                    className='flex cursor-pointer items-center gap-6 hover:bg-primary-medium hover:text-text-white
                   '
                     onClick={() => handleCheckboxChange(tech.title)}
                   >
@@ -127,7 +127,7 @@ const Projects = () => {
             </>
           )}
         </div>
-        <div className='mt-[16px] lg:mt-0 lg:flex lg:h-full lg:w-full lg:items-start lg:justify-center lg:gap-[12px] lg:p-[48px]'>
+        <div className='mt-4 lg:mt-0 lg:flex lg:h-full lg:w-full lg:items-start lg:justify-center lg:gap-3 lg:p-3'>
           <ul className='projects-grid w-full text-secondary-gray'>
             {filteredProjects.map((project) => (
               <li className='' key={project.id}>
@@ -144,7 +144,7 @@ const Projects = () => {
           </ul>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 
