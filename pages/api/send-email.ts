@@ -52,8 +52,8 @@ export default async function handler(
 
   try {
     const data = await resend.emails.send({
-      from: `${senderName.trim()} <${process.env.EMAIL_FROM}>`,
-      to: process.env.EMAIL_TO as string,
+      from: `${senderName.trim()} <onboarding@resend.dev>`,
+      to: 'dev.lukacs@gmail.com' as string,
       subject: 'Message from contact form',
       reply_to: senderEmail as string,
       react: React.createElement(EmailTemplate, {
